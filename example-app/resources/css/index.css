@@ -1,0 +1,177 @@
+body{
+    background-color: #202020	;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* body{
+    font-family: Poppins;
+    margin: 0;
+    background-color: #010101;
+    color: #eee;
+} */
+
+ body{
+    margin: 0;
+ }
+svg{
+    width: 25px;
+}
+.slider{
+    height: 100vh;
+    margin-top: 10px;
+    position: relative;
+
+}
+.slider .list .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: .5s;
+    color: white;
+}
+.slider .list .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slider .list .item::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+        to top, #000 40%, transparent
+    );
+}
+.slider .list .item .content{
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    width: 500px;
+    max-width: 80%;
+    z-index: 1;
+}
+.slider .list .item .content p:nth-child(1){
+    text-transform: uppercase;
+    letter-spacing: 10px;
+}
+.slider .list .item .content h2{
+    font-size: 100px;
+    margin: 0;
+}
+.slider .list .item.active{
+    opacity: 1;
+    z-index: 10;
+}
+@keyframes showContent {
+    to{
+        transform: translateY(0);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+.slider .list .item.active p:nth-child(1),
+.slider .list .item.active h2,
+.slider .list .item.active p:nth-child(3){
+    transform: translateY(30px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent .5s .7s ease-in-out 1 forwards;
+}
+.slider .list .item.active h2{
+    animation-delay: 1s;
+}
+.slider .list .item.active p:nth-child(3){
+    animation-duration: 1.3s;
+}
+.thumbnail {
+    display: flex;
+    margin-top: -150px;
+    gap: 30px;
+    width: 100%;
+    height: 250px;
+    padding: 0 50px;
+    box-sizing: border-box;
+    overflow-x: auto; /* Allows for horizontal scrolling */
+    align-items: center;
+    justify-content: start;
+    z-index: 11;
+    position: relative; /* Ensure it's properly positioned */
+}
+
+.thumbnail::-webkit-scrollbar {
+    height: 4px; /* Smaller scrollbar for aesthetics */
+    background-color: rgba(255,255,255,0.1); /* Optional: styled scrollbar background */
+}
+
+.thumbnail::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.5); /* Optional: styled scrollbar thumb */
+    border-radius: 10px;
+}
+
+.thumbnail .item {
+    width: 450px;
+    height: 220px;
+    flex-shrink: 0;
+    position: relative; /* Needed for positioning content over image */
+    cursor: pointer; /* Make it obvious that items are clickable */
+    border-radius: 10px; /* Rounded corners for aesthetics */
+    overflow: hidden; /* Ensures no overflow from the rounded corners */
+    background-color: #000; /* Fallback background */
+}
+
+.thumbnail .item img {
+    position: absolute; /* Position image absolutely to cover the whole item */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5); /* Darken the image so text is readable */
+    transition: filter 0.5s;
+}
+
+.thumbnail .item.active img {
+    filter: brightness(0.75); /* Slightly lighten the image when active */
+}
+
+.thumbnail .item .content {
+    position: absolute; /* Position text over the image */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Set text color to white */
+    text-align: center; /* Center the text horizontally */
+     /* Padding around the text */
+    z-index: 2; /* Ensure content is above the image */
+}
+
+.thumbnail .item .content h4 {
+    font-size: 28px; /* Adjust size for visibility */
+    font-weight: bold; /* Make title bold */
+    margin-bottom: 5px; /* Space between title and date */
+}
+.thumbnail .item .content div{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+.thumbnail .item .content p {
+    font-size: 14px; /* Smaller font for dates */
+    margin: 0; /* Remove margin for compact appearance */
+}
+@media screen and (max-width: 678px) {
+    .thumbnail{
+        justify-content: start;
+    }
+    .slider .list .item .content h2{
+        font-size: 60px;
+    }
+}
