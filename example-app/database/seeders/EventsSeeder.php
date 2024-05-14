@@ -46,7 +46,7 @@ class EventsSeeder extends Seeder
         Events::create([
             'user_id' => 1,
             'type_id' => 1,
-            'city_id' => 1,
+            'city_id' => 5,
             'title' => 'Art Exhibition',
             'ticket_price' => 50,
             'ticket_url' => 'https://artexhibition.com/',
@@ -62,7 +62,7 @@ class EventsSeeder extends Seeder
         Events::create([
             'user_id' => 1,
             'type_id' => 1,
-            'city_id' => 1,
+            'city_id' => 8,
             'title' => 'Music Festival',
             'ticket_price' => 100,
             'ticket_url' => 'https://musicfestival.com/',
@@ -78,7 +78,7 @@ class EventsSeeder extends Seeder
         Events::create([
             'user_id' => 1,
             'type_id' => 1,
-            'city_id' => 1,
+            'city_id' => 12,
             'title' => 'Startup Pitch Competition',
             'ticket_price' => 50,
             'ticket_url' => 'https://startupcompetition.com/',

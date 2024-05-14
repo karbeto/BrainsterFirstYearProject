@@ -13,8 +13,46 @@ class CitiesSeeder extends Seeder
      */
     public function run(): void
     {
-        Cities::create([
-            'name' => 'Skopje',
-        ]);   
+        $cities = [
+            'Skopje',
+            'Berovo',
+            'Bitola',
+            'Bogdanci',
+            'Debar',
+            'Delčevo',
+            'Demir Hisar',
+            'Dojran',
+            'Gevgelija',
+            'Gostivar',
+            'Kavadarci',
+            'Kicevo',
+            'Kumanovo',
+            'Kocani',
+            'Kratovo',
+            'Kriva Palanka',
+            'Krusevo',
+            'Makedonski Brod',
+            'Negotino',
+            'Ohrid',
+            'Pehcevo',
+            'Prilep',
+            'Probistip',
+            'Radovis',
+            'Resen',
+            'Struga',
+            'Strumica',
+            'Sveti Nikole',
+            'Stip',
+            'Tetovo',
+            'Valandovo',
+            'Veles',
+            'Vinica'
+        ];
+
+        foreach ($cities as $city) {
+            Cities::create([
+                'name' => $city,
+            ]);
+        }
     }
 }
