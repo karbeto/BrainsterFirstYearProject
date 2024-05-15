@@ -6,6 +6,20 @@
     <title>@yield('title')</title>
     @vite('resources/css/app.css')
     @vite('resources/css/index.css')
+    <style>
+        body {
+            background-color: #101010;
+        }
+        .label-color {
+            color: #8448e5; /* Violetova */
+        }
+        .field-color {
+            color: #a0aec0; /* Siva */
+        }
+        ::placeholder {
+            color: #000000 !important; /* Placeholder color */
+        }
+    </style>
 </head>
 <body>
     @yield('content')

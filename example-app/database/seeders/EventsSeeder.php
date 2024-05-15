@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Events;
+use App\Models\Event;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -27,7 +27,7 @@ class EventsSeeder extends Seeder
         //     'contact' => '070111111',
         //     'location' => 'skopje-centar',
         // ]);
-        Events::create([
+        Event::create([
             'user_id' => 1,
             'type_id' => 1,
             'city_id' => 1,
@@ -43,7 +43,7 @@ class EventsSeeder extends Seeder
         ]);
         
         // Event 3
-        Events::create([
+        Event::create([
             'user_id' => 1,
             'type_id' => 1,
             'city_id' => 5,
@@ -59,7 +59,7 @@ class EventsSeeder extends Seeder
         ]);
         
         // Event 4
-        Events::create([
+        Event::create([
             'user_id' => 1,
             'type_id' => 1,
             'city_id' => 8,
@@ -75,7 +75,7 @@ class EventsSeeder extends Seeder
         ]);
         
         // Event 5
-        Events::create([
+        Event::create([
             'user_id' => 1,
             'type_id' => 1,
             'city_id' => 12,

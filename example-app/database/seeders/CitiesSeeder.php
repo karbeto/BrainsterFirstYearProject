@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Cities;
+use App\Models\City;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -19,7 +19,7 @@ class CitiesSeeder extends Seeder
             'Bitola',
             'Bogdanci',
             'Debar',
-            'Delčevo',
+            'Delcevo',
             'Demir Hisar',
             'Dojran',
             'Gevgelija',
@@ -50,7 +50,7 @@ class CitiesSeeder extends Seeder
         ];
 
         foreach ($cities as $city) {
-            Cities::create([
+            City::create([
                 'name' => $city,
             ]);
         }

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Types;
+use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -14,7 +14,7 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-        Types::create([
+        Type::create([
             'name' => 'Koncert',
         ]);
     }
