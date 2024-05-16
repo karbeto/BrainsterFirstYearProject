@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Brainster')
+@section('title', 'Brainster Party')
 
 @section('content')
  <!--Ovde ke e navigation menu koj ke go pram so tailwind pa posle mojte da go smenite linkojte gi ostavam otvoreni za da mojte da gi povrzite so login i register-->
