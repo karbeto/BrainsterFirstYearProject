@@ -24,6 +24,17 @@
         ::placeholder {
             color: #000000 !important; /* Placeholder color */
         }
+        .hamburger {
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px;
+            transition: 0.4s;
+        }
     </style>
 </head>
 <body>
