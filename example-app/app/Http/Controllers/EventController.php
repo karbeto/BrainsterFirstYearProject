@@ -11,7 +11,9 @@ class EventController extends Controller
 {
     public function index(){
         $events = Event::with('users')->get()->toJson();
-        return view("app.index" , compact('events'));
+        $types = Type::all();
+        $cities = City::all();
+        return view("app.index" , compact('events', 'types', 'cities'));
     }
 
     public function create(){

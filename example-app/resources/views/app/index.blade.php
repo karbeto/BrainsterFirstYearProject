@@ -3,8 +3,9 @@
 @section('title', 'Brainster Party')
 
 @section('content')
- <!--Ovde ke e navigation menu koj ke go pram so tailwind pa posle mojte da go smenite linkojte gi ostavam otvoreni za da mojte da gi povrzite so login i register-->
- <body class="bg-gray-900 text-white">
+<!--Ovde ke e navigation menu koj ke go pram so tailwind pa posle mojte da go smenite linkojte gi ostavam otvoreni za da mojte da gi povrzite so login i register-->
+
+<body class="bg-gray-900 text-white">
     <div class="flex flex-col items-center self-center px-5 py-10 w-full">
         <!-- Desktop Navbar -->
         <div class="hidden md:flex flex-row gap-7 px-10 justify-between w-full text-lg leading-8 text-white max-w-[1520px]">
@@ -23,9 +24,9 @@
             <div class="flex justify-between items-center px-5">
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6b051c7484d9d0153007283d96798e85af413ba0ce5ae7beead6b6617ba9dd44?apiKey=7925220406f349788b6d4a92c76ee210&" alt="Logo" class="shrink-0 my-auto w-40 max-w-full aspect-[7.69]" />
                 <div class="hamburger" id="hamburger">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
                 </div>
             </div>
             <div class="hidden flex-col gap-4 mt-10 px-5" id="mobileMenu">
@@ -40,11 +41,11 @@
 
 
 
-<!--Here is the side bar -->
-<div class="slider">
+    <!--Here is the side bar -->
+    <div class="slider">
         <!-- Dynamic list of slider items -->
         <div class="list"></div>
-    <!-- Dynamic thumbnails -->
+        <!-- Dynamic thumbnails -->
 
     </div>
     <div class="thumbnail mt-10"></div>
@@ -62,7 +63,7 @@
     <div class="flex flex-col mt-20 items-center self-center px-24 w-full">
         <div class="mt-16 flex items-center justify-center text-white">
             <div class="text-center">
-                <h1 class="text-4xl font-bold mb-4">Каде одиме вечер?
+                <h1 class="text-4xl font-bold mb-4">Where are we going tonight?
                     <div class="inline-block relative">
                         <div class="-z-10 absolute -right-0 -top-10 transform">
                             <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -78,7 +79,7 @@
         <div class="flex gap-5 justify-between mt-16 mb-16 w-full text-lg leading-8 text-white max-w-[1520px] max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
             <div class="flex gap-5 justify-between w-full m-auto font-medium max-md:flex-wrap">
 
-                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-[#8448E5] hover:opacity focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">Сите Настани <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-[#8448E5] hover:opacity focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">All Events <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path fill="#ffffff" d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
                     </svg>
                 </button>
@@ -86,66 +87,53 @@
                 <div id="dropdown" class="z-10 hidden bg-[#8448E5] divide-y divide-white rounded-lg shadow w-44">
                     <ul class="py-2 text-sm text-white" aria-labelledby="dropdownDefaultButton">
                         <li>
-                            <a href="#" class="flex items-center block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">Сите Настани <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                            <a href="#" class="flex items-center block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">All Events <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                     <path fill="#ffffff" d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
                                 </svg></a>
                         </li>
+                        @foreach($types as $type)
                         <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">Концерти</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">{{ $type->name }}</a>
                         </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">Претстави</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">Свирки</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">Изложба</a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
 
-                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown2" class="text-white bg-[#8448E5] hover:opacity focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">Град <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+
+                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown2" class="text-white bg-[#8448E5] hover:opacity focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">City <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path fill="#ffffff" d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
                     </svg>
                 </button>
-
+                <!-- HERE WE ADD CITIES  -->
                 <div id="dropdown2" class="z-10 hidden bg-[#8448E5] divide-y divide-white rounded-lg shadow w-44">
                     <ul class="py-2 text-sm text-white" aria-labelledby="dropdownDefaultButton">
                         <li>
-                            <a href="#" class="flex items-center block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">Град <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                            <a href="#" class="flex items-center block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">City <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                     <path fill="#ffffff" d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
                                 </svg></a>
                         </li>
+                        @foreach($cities as $city)
                         <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">Концерти</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">{{ $city->name }}</a>
                         </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">Претстави</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">Свирки</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">Изложба</a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
 
                 <div class="flex">
                     <input type="checkbox" id="choose-me" class="peer hidden" />
                     <label for="choose-me" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
-      py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> Браинстер </label>
+      py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> Brainster </label>
                 </div>
                 <div class="flex">
                     <input type="checkbox" id="choose-me2" class="peer hidden" />
                     <label for="choose-me2" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
-      py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> МОБ </label>
+      py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> MOB </label>
                 </div>
                 <div class="flex">
                     <input type="checkbox" id="choose-me3" class="peer hidden" />
                     <label for="choose-me3" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
-      py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> Лабораториум </label>
+      py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> Laboratorium </label>
                 </div>
             </div>
 
@@ -218,4 +206,4 @@
     </div>
     <script src="{{ asset('js/calendar.js') }}"></script>
 
-@endsection
+    @endsection

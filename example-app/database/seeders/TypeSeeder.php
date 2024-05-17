@@ -14,8 +14,17 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-        Type::create([
-            'name' => 'Koncert',
-        ]);
+
+        $types = [
+            'Concerts',
+            'Performances',
+            'Gigs',
+            'Еxhibitions'
+        ];
+        foreach ($types as $type) {
+            Type::create([
+                'name' => $type,
+            ]);
+        }
     }
 }
