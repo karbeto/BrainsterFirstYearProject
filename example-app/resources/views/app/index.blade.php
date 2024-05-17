@@ -47,7 +47,7 @@
     <!-- Dynamic thumbnails -->
 
     </div>
-    <div class="thumbnail"></div>
+    <div class="thumbnail mt-10"></div>
     <script src="{{ asset('js/app.js') }}"></script>
     <div id="eventsData" style="display: none;">{{ $events }}</div>
     <script>
@@ -59,7 +59,7 @@
         });
     </script>
 
-    <div class="flex flex-col items-center self-center px-24 w-full">
+    <div class="flex flex-col mt-20 items-center self-center px-24 w-full">
         <div class="mt-16 flex items-center justify-center text-white">
             <div class="text-center">
                 <h1 class="text-4xl font-bold mb-4">Каде одиме вечер?

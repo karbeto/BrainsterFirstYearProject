@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     var eventsData = document.getElementById('eventsData').textContent;
+
     var jsonData = JSON.parse(eventsData);
-    console.log(jsonData);
+    console.log(jsonData)
     decodeURI(jsonData);
     function transformEvents(jsonData) {
         const events = [];
@@ -99,32 +100,37 @@ document.addEventListener('DOMContentLoaded', function () {
                 imageContainer.classList.add('event-image');
                 imageContainer.style.backgroundImage = `url(${info.event.extendedProps.bgImage})`;
                 imageContainer.style.backgroundSize = 'cover';
-                imageContainer.style.height = '200px'; // 80% height
-
+                imageContainer.style.height = '100%'; // 80% height
+            
                 // Create an img element for the event image
                 const imgElement = document.createElement('img');
                 imgElement.src = info.event.extendedProps.bgImage;
-                imgElement.style.width = '100%';
-                imgElement.style.height = '100%';
-                imgElement.style.objectFit = 'cover';
-
+                imgElement.style.width = '100%'; // Adjusted to fill the container width
+                imgElement.style.height = '100%'; // Adjusted to fill the container height
+                imgElement.style.objectFit = 'cover'; // Ensures the image covers the entire space
+                imgElement.style.objectPosition = 'center'; // Centers the image
+                
                 imageContainer.appendChild(imgElement);
                 eventElement.appendChild(imageContainer);
-
+            
+                // Create a container for the title and time
                 const container = document.createElement('div');
-                container.classList.add('flex', 'items-center');
-                const timeElement = document.createElement('div');
-                timeElement.classList.add('mr-2', 'text-white'); // Add margin and color using Tailwind classes
-                timeElement.textContent = eventTime; // Set event time text
-                container.appendChild(timeElement);
-
+                container.classList.add('flex', 'flex-col', 'items-center', 'justify-center', 'h-full');
+            
                 // Create a div for the event title
                 const titleContainer = document.createElement('div');
-                titleContainer.classList.add('event-title');
+                titleContainer.classList.add('event-title', 'mb-2'); // Add margin bottom using Tailwind class
                 titleContainer.textContent = info.event.title;
                 titleContainer.style.backgroundColor = info.event.extendedProps.bgColor; // Event color
-                titleContainer.style.height = '50px'; // 20% height
+                // titleContainer.style.height = '50%'; // 50% height
                 container.appendChild(titleContainer);
+                eventElement.appendChild(container);
+                // Create a div for the event time
+                const timeElement = document.createElement('div');
+                timeElement.classList.add('text-white');
+                timeElement.textContent = eventTime; // Set event time text
+                container.appendChild(timeElement);
+            
                 eventElement.appendChild(container);
             }
             else if (eventsOnDate.length === 2) {
@@ -273,6 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 document.getElementById('multiEventModal').classList.remove('hidden');
             } else if (eventsOnDate.length === 1) {
+                console.log(eventsOnDate);
                 const singleEvent = eventsOnDate[0];
                 const singleModalContent = document.getElementById('singleModalContent');
                 const singleModalImageContainer = document.getElementById('singleModalImageContainer');
@@ -286,7 +293,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     singleModalImageContainer.appendChild(imgElement);
                 }
 
-                singleModalContent.innerHTML = `<p>${singleEvent.title}</p><p>Start: ${singleEvent.start}</p><p>End: ${singleEvent.end}</p><p>Description: ${singleEvent.extendedProps.description}</p>`;
+
+                singleModalContent.innerHTML = `<p>${singleEvent.title}</p><p>Start: ${singleEvent.start}</p><p>End: ${singleEvent.to}</p><p>Description: ${singleEvent.extendedProps.description}</p>`;
 
                 document.getElementById('singleEventModal').classList.remove('hidden');
             }
