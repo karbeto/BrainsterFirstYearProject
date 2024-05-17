@@ -1,0 +1,219 @@
+#calendar {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.fc-day-header {
+    text-align: center;
+    border: none ;
+    background-color: transparent;
+}
+
+.fc-col-header-cell,
+.fc-col-header-cell.fc-day {
+    border: none;
+}
+
+#calendar .fc-scrollgrid.fc-scrollgrid-liquid {
+    border: none;
+}
+
+.fc-scrollgrid td:last-of-type{
+    border: none;
+}
+
+#calendar .fc-daygrid.fc-customDayGrid-view.fc-view {
+    border: none ;
+}
+
+.fc td,
+.fc th {
+    border-style: none;
+}
+
+
+.fc-daygrid-body {
+    border: none;
+}
+
+.fc-col-header-cell-cushion {
+    padding: 0;
+}
+
+.fc-col-header-cell {
+    background-color: transparent;
+}
+
+.fc-scroller {
+    overflow: hidden !important;
+}
+
+.fc-daygrid-body .fc-day {
+
+    border: 1px solid #8448E5 !important;
+    border-radius: 15px;
+    padding: 1px;
+    margin: 10px;
+    width: calc(100% / 7 - 25px);
+    display: inline-block;
+    vertical-align: top;
+    overflow-y: auto;
+    height: 250px;
+}
+
+.fc-day-top {
+    height: 35px;
+}
+
+.fc-h-event {
+    border: none;
+    background-color: transparent;
+}
+
+/* margin between events */
+.fc-event-main {
+    margin-bottom: 5px;
+}
+
+.fc-daygrid-day-number {
+    color: #8448E5;
+}
+
+.fc .fc-daygrid-day-top {
+    display: flex;
+    flex-direction: row !important;
+}
+
+.fc .fc-button {
+    padding: 0.8em 10em !important;
+    background-color: #8448E5 !important;
+}
+
+.fc .fc-toolbar-title {
+    border: 1px solid #8448E5;
+    padding: 0.2em 5.5em;
+    border-radius: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fc .fc-toolbar-chunk:nth-child(2) {
+    width: 650px;
+    text-align: center;
+}
+
+.custom-event {
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+}
+
+.custom-events {
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.event-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.custom-event img {
+    width: 100%;
+    object-fit: cover;
+}
+
+#eventModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    width: 80%;
+    height: 80%;
+    overflow: auto;
+}
+
+#eventModal .modal-content {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+#closeModal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    padding: 5px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    z-index: 1000;
+}
+
+.no-background {
+    background-color: transparent !important;
+}
+
+.mw {
+    margin: 0 auto;
+    overflow-y: auto;
+}
+
+.mw .custom-event {
+    width: 40%;
+}
+
+.single-event {
+    display: flex;
+    flex-direction: column;
+    height: 190px;
+    margin: 0;
+    padding: 0;
+}
+
+.single-event .event-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.event-image {
+    margin: 0;
+}
+#singleModalImageContainer img{
+    width: 80%;
+}
+
+::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: white;  
+    border-radius: 20px;      /* color of the tracking area */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #8448E5;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 1px solid #8448E5;  /* creates padding around scroll thumb */
+  }

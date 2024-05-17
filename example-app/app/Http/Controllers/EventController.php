@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class EventController extends Controller
 {
     public function index(){
-        $events = Event::all()->toJson();
+        $events = Event::with('users')->get()->toJson();
         return view("app.index" , compact('events'));
     }
 

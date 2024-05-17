@@ -19,7 +19,16 @@ class UserSeeder extends Seeder
             'name' => 'Alice doe',
             'email' => 'alice.doe@example.com',
             'company' => 'Brainster',
-            'color' => 'purple',
+            'color' => '#8448E5',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+            'remember_token' => Str::random(10),
+        ]);
+          User::create([
+            'name' => 'John doe',
+            'email' => 'john.doe@example.com',
+            'company' => 'Brainiac',
+            'color' => '#8448E5',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
             'remember_token' => Str::random(10),
