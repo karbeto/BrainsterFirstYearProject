@@ -89,12 +89,13 @@ document.addEventListener('DOMContentLoaded', function () {
         eventContent: function (info) {
             const eventElement = document.createElement('div');
             const eventTime = info.event.start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            const eventsOnDate = calendar.getEvents().filter(event => {
-                return event.start.toISOString().split('T')[0] === info.event.start.toISOString().split('T')[0];
+            const eventsOnDate = calendar.getEvents().filter(eventItem => {
+                console.log(eventItem);
+                console.log("here at the events")
+                return eventItem.start.toISOString().split('T')[0] === info.event.start.toISOString().split('T')[0];
             });
             if (eventsOnDate.length === 1) {
                 eventElement.classList.add('custom-events', 'fc-h-event', 'single-event');
-
                 // Create a div for the background image
                 const imageContainer = document.createElement('div');
                 imageContainer.classList.add('event-image');
@@ -232,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         singleModalImageContainer.appendChild(imgElement);
                     }
 
-                    singleModalContent.innerHTML = `<p>${singleEvent.title}</p><p>Start: ${singleEvent.start}</p><p>End: ${singleEvent.end}</p><p>Description: ${singleEvent.extendedProps.description}</p>`;
+                    singleModalContent.innerHTML = `<p>${singleEvent.title}</p><p>Start: ${singleEvent.startStr}</p><p>End: ${singleEvent.endStr}</p><p>Description: ${singleEvent.extendedProps.description}</p>`;
 
                     document.getElementById('singleEventModal').classList.remove('hidden');
                 }
@@ -294,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
 
-                singleModalContent.innerHTML = `<p>${singleEvent.title}</p><p>Start: ${singleEvent.start}</p><p>End: ${singleEvent.to}</p><p>Description: ${singleEvent.extendedProps.description}</p>`;
+                singleModalContent.innerHTML = `<p>${singleEvent.title}</p><p>Start: ${singleEvent.startStr}</p><p>End: ${singleEvent.endStr}</p><p>Description: ${singleEvent.extendedProps.description}</p>`;
 
                 document.getElementById('singleEventModal').classList.remove('hidden');
             }
@@ -325,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function () {
             singleModalImageContainer.appendChild(imgElement);
         }
 
-        singleModalContent.innerHTML = `<p>${event.title}</p><p>Start: ${event.start}</p><p>End: ${event.end}</p><p>Description: ${event.extendedProps.description}</p>`;
+        singleModalContent.innerHTML = `<p>${event.title}</p><p>Start: ${event.startStr}</p><p>End: ${event.endStr}</p><p>Description: ${event.extendedProps.description}</p>`;
 
         document.getElementById('singleEventModal').classList.remove('hidden');
     }
