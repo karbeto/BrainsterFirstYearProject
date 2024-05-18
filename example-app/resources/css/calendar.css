@@ -114,6 +114,7 @@
     border-radius: 10px;
     padding: 10px;
     color: white;
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -169,9 +170,10 @@
     background-color: transparent !important;
 }
 
-.mw {
+#mw {
     margin: 0 auto;
     overflow-y: auto;
+    background-color: #101010;
 }
 
 .mw .custom-event {
@@ -216,4 +218,10 @@
     background-color: #8448E5;    /* color of the scroll thumb */
     border-radius: 20px;       /* roundness of the scroll thumb */
     border: 1px solid #8448E5;  /* creates padding around scroll thumb */
+  }
+
+  #multiEventModalBody{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }

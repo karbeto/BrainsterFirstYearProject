@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var eventsData = document.getElementById('eventsData').textContent;
 
     var jsonData = JSON.parse(eventsData);
-    console.log(jsonData)
     decodeURI(jsonData);
     function transformEvents(jsonData) {
         const events = [];
@@ -90,8 +89,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const eventElement = document.createElement('div');
             const eventTime = info.event.start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             const eventsOnDate = calendar.getEvents().filter(eventItem => {
-                console.log(eventItem);
-                console.log("here at the events")
                 return eventItem.start.toISOString().split('T')[0] === info.event.start.toISOString().split('T')[0];
             });
             if (eventsOnDate.length === 1) {
@@ -196,6 +193,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     eventsOnDate.forEach(event => {
                         const eventElement = document.createElement('div');
+                        console.log(event.extendedProps);
+                        
                         eventElement.classList.add('custom-event', event.extendedProps.bgColor);
 
                         if (event.extendedProps.bgImage) {
@@ -210,7 +209,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         textElement.classList.add('event-title');
                         textElement.textContent = event.title;
                         eventElement.appendChild(textElement);
-
                         // Add data-start attribute to event element
                         eventElement.dataset.start = event.start.toISOString().split('T')[0];
 
@@ -280,7 +278,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 document.getElementById('multiEventModal').classList.remove('hidden');
             } else if (eventsOnDate.length === 1) {
-                console.log(eventsOnDate);
                 const singleEvent = eventsOnDate[0];
                 const singleModalContent = document.getElementById('singleModalContent');
                 const singleModalImageContainer = document.getElementById('singleModalImageContainer');

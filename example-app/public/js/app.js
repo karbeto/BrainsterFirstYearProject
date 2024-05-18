@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initSlider(slides);
 
     function initSlider(slides) {
-        console.log(slides);
         const listContainer = document.querySelector('.list');
         const thumbnailContainer = document.querySelector('.thumbnail');
 
