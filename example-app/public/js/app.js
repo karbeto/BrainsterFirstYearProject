@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function initSlider(slides) {
         const listContainer = document.querySelector('.list');
         const thumbnailContainer = document.querySelector('.thumbnail');
-
+    
         // Clear existing content
         listContainer.innerHTML = '';
         thumbnailContainer.innerHTML = '';
-
+    
         slides.forEach((slide, index) => {
             const listItem = document.createElement('div');
-            listItem.className = 'item' + (index === 0 ? ' active' : '');
+            listItem.className = 'item' + (index === slides.length - 1 ? ' active' : '');
             listItem.innerHTML = `
                 <img src="${slide.image_url}">
                 <div class="content">
@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             // Use prepend to add the item at the beginning of the container
             listContainer.prepend(listItem);
-
+    
             // Create thumbnail item
             const thumbnailItem = document.createElement('div');
-            thumbnailItem.className = 'item' + (index === 0 ? ' active' : '');
+            thumbnailItem.className = 'item' + (index === slides.length - 1 ? ' active' : '');
             thumbnailItem.innerHTML = `
                 <img src="${slide.image_url}">
                 <div class="content">
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Use prepend to add the thumbnail at the beginning of the container
             thumbnailContainer.prepend(thumbnailItem);
         });
-
+    
         initSmoothScrolling(thumbnailContainer);
         initDragToScroll(thumbnailContainer);
     }

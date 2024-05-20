@@ -19,12 +19,20 @@
                         <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" placeholder="John Doe" required="">
                     </div>
                     <div>
+                        <label for="company" class="block mb-2 text-sm font-medium text-[#8448e5]">Company Name</label>
+                        <input type="text" name="company" id="company" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" placeholder="Company Inc." required="">
+                    </div>
+                    <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-[#8448e5]">Your email</label>
                         <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" placeholder="name@company.com" required="">
                     </div>
                     <div>
                         <label for="password" class="block mb-2 text-sm font-medium text-[#8448e5]">Password</label>
                         <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" required="">
+                    </div>
+                    <div>
+                        <label for="confirm_password" class="block mb-2 text-sm font-medium text-[#8448e5]">Confirm Password</label>
+                        <input type="password" name="confirm_password" id="confirm_password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" required="">
                     </div>
                     <div class="flex items-center justify-between">
                         <div class="flex items-start">

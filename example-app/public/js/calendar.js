@@ -6,43 +6,38 @@ document.addEventListener('DOMContentLoaded', function () {
     function transformEvents(jsonData) {
         const events = [];
         const eventCountPerDay = {};
-
+    
         jsonData.forEach(eventData => {
             const start = new Date(eventData.from);
-            const end = new Date(eventData.to);
-            let currentDate = new Date(start);
-
-            while (currentDate <= end) {
-                const dateString = currentDate.toISOString().split('T')[0];
-                if (!eventCountPerDay[dateString]) {
-                    eventCountPerDay[dateString] = 0;
-                }
-                eventCountPerDay[dateString]++;
-                events.push({
-                    title: eventData.title,
-                    start: dateString,
-                    end: end.toISOString().split('T')[0],
-                    contact: eventData.contact,
-                    ticket_price: eventData.ticket_price,
-                    ticket_url: eventData.ticket_url,
-                    location: eventData.location,
-                    rendering: 'background',
-                    extendedProps: {
-                        bgImage: eventData.image_url,
-                        bgColor: eventData.color,
-                        description: eventData.comment
-                    }
-                });
-                currentDate.setDate(currentDate.getDate() + 1);
+            const dateString = start.toISOString().split('T')[0];
+    
+            if (!eventCountPerDay[dateString]) {
+                eventCountPerDay[dateString] = 0;
             }
+            eventCountPerDay[dateString]++;
+            events.push({
+                title: eventData.title,
+                start: dateString,
+                end: dateString,
+                contact: eventData.contact,
+                ticket_price: eventData.ticket_price,
+                ticket_url: eventData.ticket_url,
+                location: eventData.location,
+                rendering: 'background',
+                extendedProps: {
+                    bgImage: eventData.image_url,
+                    bgColor: eventData.color,
+                    description: eventData.comment
+                }
+            });
         });
-
+    
         return {
             events,
             eventCountPerDay
         };
     }
-
+    
     const {
         events,
         eventCountPerDay
@@ -231,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         singleModalImageContainer.appendChild(imgElement);
                     }
 
-                    singleModalContent.innerHTML = `<p>${singleEvent.title}</p><p>Start: ${singleEvent.startStr}</p><p>End: ${singleEvent.endStr}</p><p>Description: ${singleEvent.extendedProps.description}</p>`;
+                    singleModalContent.innerHTML = `<p>${singleEvent.title}</p><p>Start: ${singleEvent.startStr}</p><p>Description: ${singleEvent.extendedProps.description}</p>`;
 
                     document.getElementById('singleEventModal').classList.remove('hidden');
                 }
@@ -292,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
 
-                singleModalContent.innerHTML = `<p>${singleEvent.title}</p><p>Start: ${singleEvent.startStr}</p><p>End: ${singleEvent.endStr}</p><p>Description: ${singleEvent.extendedProps.description}</p>`;
+                singleModalContent.innerHTML = `<p>${singleEvent.title}</p><p>Start: ${singleEvent.startStr}</p><p>Description: ${singleEvent.extendedProps.description}</p>`;
 
                 document.getElementById('singleEventModal').classList.remove('hidden');
             }
@@ -323,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function () {
             singleModalImageContainer.appendChild(imgElement);
         }
 
-        singleModalContent.innerHTML = `<p>${event.title}</p><p>Start: ${event.startStr}</p><p>End: ${event.endStr}</p><p>Description: ${event.extendedProps.description}</p>`;
+        singleModalContent.innerHTML = `<p>${event.title}</p><p>Start: ${event.startStr}</p><p>Description: ${event.extendedProps.description}</p>`;
 
         document.getElementById('singleEventModal').classList.remove('hidden');
     }
