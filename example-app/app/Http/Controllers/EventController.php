@@ -49,7 +49,6 @@ class EventController extends Controller
         $event->comment = $validatedData['comment'];
         $event->contact = $validatedData['contact'];
         $event->location = $validatedData['location'];
-    
         $event->save();
         
         return redirect()->route('view-events')->with('success', 'Event created successfully.');
