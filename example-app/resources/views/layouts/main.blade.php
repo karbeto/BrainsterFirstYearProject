@@ -35,7 +35,43 @@
             margin: 4px;
             transition: 0.4s;
         }
+
+        .hidden {
+    display: none;
+}
+
+#passwordRequirements {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 0.375rem;
+}
+
+#passwordRequirements p {
+    margin: 5px 0;
+}
+
+.valid {
+    color: green;
+}
+
+.invalid {
+    color: red;
+}
+
+        @keyframes slideIn {
+            0% {opacity: 0;}
+            20% {opacity: 1;}
+            80% {opacity: 1;}
+            100% {opacity: 0;}
+        }
+
+        .slide-in {
+            animation: slideIn 10s infinite;
+        }
     </style>
+
 </head>
 <body>
     @yield('content')

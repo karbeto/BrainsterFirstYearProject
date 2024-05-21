@@ -110,6 +110,6 @@
         </div>
     </form>
 </section>
-<script src="{{ asset('js/validate.js') }}"></script>
+<script src="{{ asset('js/event-validator.js') }}"></script>
 
 @endsection

@@ -10,4 +10,4 @@ Route::post('/store-event', [EventController::class, 'store'])->name('store.even
 
 
 Route::get('/login', [UserController::class, "login"])->name('login');
-Route::get('/signup', [UserController::class, "signUp"])->name('signup');
+Route::get('/signup', [UserController::class, "register"])->name('register');
