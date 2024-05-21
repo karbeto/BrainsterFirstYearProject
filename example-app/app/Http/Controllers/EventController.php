@@ -54,5 +54,10 @@ class EventController extends Controller
         return redirect()->route('view-events')->with('success', 'Event created successfully.');
     }
     
-    
+    public function all() 
+    {
+        $events = Event::with('users')->get();
+
+        return response()->json($events);
+    }
 }

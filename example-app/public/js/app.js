@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var eventsData = document.getElementById('eventsData').textContent;
-    var slides = JSON.parse(eventsData);
+    // var eventsData = document.getElementById('eventsData').textContent;
+    // var slides = JSON.parse(eventsData);
+    var eventsData = null;//document.getElementById('eventsData').textContent;
+    var slides = null;//JSON.parse(eventsData);
+    fetch("/events")
+        .then(res => res.json())
+        .then(res => {
+            console.log('here' , res);
+            slides = res;
+            initSlider(slides);
+        })
 
-    initSlider(slides);
+   
 
     function initSlider(slides) {
         const listContainer = document.querySelector('.list');
