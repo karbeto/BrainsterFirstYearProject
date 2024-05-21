@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="w-full p-2 rounded-xl text-white bg-[#8448e5] hover:bg-[#101010] hover:border-[1px] hover:border-[#8448e5]">Sign up</button>
+                    <button type="submit" class="w-full p-2 rounded-xl text-white bg-purple-600 hover:bg-[#101010]">Sign up</button>
                     <p class="text-sm font-light text-gray-500">
                         Already have an account? <a href="{{ route('login') }}" class="font-medium text-[#f54646] hover:underline">Log in</a>
                     </p>

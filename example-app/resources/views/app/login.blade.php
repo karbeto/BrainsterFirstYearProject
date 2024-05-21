@@ -32,7 +32,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" id="login_button" class="w-full p-2 rounded-xl text-white bg-[#8448e5]  hover:bg-[#101010] hover:border-[1px] hover:border-[#8448e5]">Log in</button>
+                    <button type="submit" id="login_button" class="w-full p-2 rounded-xl box-border text-white bg-purple-600  hover:bg-[#101010]">Log in</button>
                     <p class="text-sm font-light text-gray-500">
                         Don’t have an account yet? <a href="{{ route('register') }}" class="font-medium text-[#f54646] hover:underline">Sign up</a>
                     </p>
