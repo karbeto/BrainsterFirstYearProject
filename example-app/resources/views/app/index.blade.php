@@ -50,7 +50,7 @@
     </div>
     <div class="thumbnail mt-10"></div>
     <script src="{{ asset('js/app.js') }}"></script>
-    <div id="eventsData" style="display: none;">{{ $events }}</div>
+    <!-- <div id="eventsData" style="display: none;">{{ $events }}</div> -->
     <script>
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
