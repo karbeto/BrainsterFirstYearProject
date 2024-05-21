@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
             events.push({
                 title: eventData.title,
                 start: dateString,
-                end: '',
+                end_date: end ,
                 contact: eventData.contact,
                 ticket_price: eventData.ticket_price,
                 ticket_url: eventData.ticket_url,
