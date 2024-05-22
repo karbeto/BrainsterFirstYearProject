@@ -105,20 +105,21 @@
                 </div>
 
                 <div class="flex">
-                    <input type="checkbox" id="choose-me" class="peer hidden" />
-                    <label for="choose-me" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
-      py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> Brainster </label>
-                </div>
-                <div class="flex">
-                    <input type="checkbox" id="choose-me2" class="peer hidden" />
-                    <label for="choose-me2" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
-      py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> MOB </label>
-                </div>
-                <div class="flex">
-                    <input type="checkbox" id="choose-me3" class="peer hidden" />
-                    <label for="choose-me3" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
-      py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> Laboratorium </label>
-                </div>
+    <input type="checkbox" id="brainsterFilter" class="peer hidden" />
+    <label for="brainsterFilter" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
+        py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> 
+        Brainster 
+    </label>
+    
+</div>
+<div class="flex">
+    <input type="checkbox" id="choose-me2" class="peer hidden" />
+    <label for="choose-me2" class="select-none cursor-pointer rounded-lg border-2 border-gray-200 py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200"> MOB </label>
+</div>
+<div class="flex">
+    <input type="checkbox" id="choose-me3" class="peer hidden" />
+    <label for="choose-me3" class="select-none cursor-pointer rounded-lg border-2 border-gray-200 py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200"> Laboratorium </label>
+</div>
             </div>
 
             <form class="max-w-md mx-auto">

@@ -9,7 +9,40 @@
             allEvents = transformEvents(jsonData).events; // Store all events
             initializeCalendar(allEvents);
         });
+        document.getElementById('choose-me2').addEventListener('change', filterEvents);
+    document.getElementById('choose-me3').addEventListener('change', filterEvents);
+    document.getElementById('brainsterFilter').addEventListener('change', filterEvents);
 
+    // Function to filter events based on the checkboxes
+    function filterEvents() {
+        const brainsterCheckbox = document.getElementById('brainsterFilter');
+        const mobCheckbox = document.getElementById('choose-me2');
+        const laboratoriumCheckbox = document.getElementById('choose-me3');
+
+        let filteredEvents = allEvents;
+
+        // Filter for Brainster events
+        if (brainsterCheckbox.checked) {
+            filteredEvents = filteredEvents.filter(event => event.title.includes("Brainster"));
+        }
+
+        // Filter for MOB events
+        if (mobCheckbox.checked) {
+            filteredEvents = filteredEvents.filter(event => event.title.includes("MOB"));
+        }
+
+        // Filter for Laboratorium events
+        if (laboratoriumCheckbox.checked) {
+            filteredEvents = filteredEvents.filter(event => event.title.includes("Laboratorium"));
+        }
+
+        const calendar = document.getElementById('calendar').calendar;
+        calendar.removeAllEvents();
+        calendar.addEventSource(filteredEvents);
+    }
+
+
+        
 
         // var jsonData = JSON.parse(eventsData);
         function transformEvents(jsonData) {
