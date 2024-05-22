@@ -15,12 +15,12 @@ class Event extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function types()
+    public function type()
     {
-        return $this->hasOne(Type::class);
+        return $this->belongsTo(Type::class);
     }
-    public function cities()
+    public function city()
     {
-        return $this->hasOne(City::class);
+        return $this->belongsTo(City::class);
     }
 }

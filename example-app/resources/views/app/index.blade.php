@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-
+        
 
 
     <!--Here is the side bar -->
@@ -51,14 +51,7 @@
     <div class="thumbnail mt-10"></div>
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- <div id="eventsData" style="display: none;">{{ $events }}</div> -->
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
 
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
 
     <div class="flex flex-col mt-20 items-center self-center px-24 w-full">
         <div class="mt-16 flex items-center justify-center text-white">
@@ -86,16 +79,13 @@
 
                 <div id="dropdown" class="z-10 hidden bg-[#8448E5] divide-y divide-white rounded-lg shadow w-44">
                     <ul class="py-2 text-sm text-white" aria-labelledby="dropdownDefaultButton">
-                        <li>
-                            <a href="#" class="flex items-center block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">All Events <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                    <path fill="#ffffff" d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
-                                </svg></a>
-                        </li>
-                        @foreach($types as $type)
-                        <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">{{ $type->name }}</a>
-                        </li>
-                        @endforeach
+                
+                        <select id="eventTypeFilter" class="px-4 py-2 text-sm text-white bg-[#8448E5] border-none rounded-lg shadow">
+                     <option value="">All Events  </option>
+                    @foreach($types as $type)
+                 <option value="{{ $type->id }}">{{ $type->name }}</option>
+                      @endforeach
+                  </select>
                     </ul>
                 </div>
 
@@ -106,18 +96,12 @@
                 </button>
                 <!-- HERE WE ADD CITIES  -->
                 <div id="dropdown2" class="z-10 hidden bg-[#8448E5] divide-y divide-white rounded-lg shadow w-44">
-                    <ul class="py-2 text-sm text-white" aria-labelledby="dropdownDefaultButton">
-                        <li>
-                            <a href="#" class="flex items-center block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">City <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                    <path fill="#ffffff" d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
-                                </svg></a>
-                        </li>
-                        @foreach($cities as $city)
-                        <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">{{ $city->name }}</a>
-                        </li>
-                        @endforeach
-                    </ul>
+                <select id="cityFilter" class="block px-4 py-2 text-sm text-white bg-[#8448E5] rounded-lg shadow" aria-label="Select a city">
+    <option value="">All Cities</option>
+    @foreach($cities as $city)
+        <option value="{{ $city->id }}">{{ $city->name }}</option>
+    @endforeach
+</select>
                 </div>
 
                 <div class="flex">
@@ -205,5 +189,13 @@
         </div>
     </div>
     <script src="{{ asset('js/calendar.js') }}"></script>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
 
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+    </script>
     @endsection

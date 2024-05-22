@@ -56,8 +56,8 @@ class EventController extends Controller
     
     public function all() 
     {
-        $events = Event::with('users')->get();
-
+        $events = Event::with('users', 'type', 'city')->get();
         return response()->json($events);
     }
+
 }
