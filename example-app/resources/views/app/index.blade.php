@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-        
+
 
 
     <!--Here is the side bar -->
@@ -69,7 +69,7 @@
         </div>
 
 
-        <div class="flex gap-5 justify-between mt-16 mb-16 w-full text-lg leading-8 text-white max-w-[1520px] max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
+        <div class=" gap-5 justify-between mt-16 mb-16 w-full text-lg leading-8 text-white max-w-[1520px] max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
             <div class="flex gap-5 justify-between w-full m-auto font-medium max-md:flex-wrap">
 
                 <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-[#8448E5] hover:opacity focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">All Events <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -79,13 +79,13 @@
 
                 <div id="dropdown" class="z-10 hidden bg-[#8448E5] divide-y divide-white rounded-lg shadow w-44">
                     <ul class="py-2 text-sm text-white" aria-labelledby="dropdownDefaultButton">
-                
+
                         <select id="eventTypeFilter" class="px-4 py-2 text-sm text-white bg-[#8448E5] border-none rounded-lg shadow">
-                     <option value="">All Events  </option>
-                    @foreach($types as $type)
-                 <option value="{{ $type->id }}">{{ $type->name }}</option>
-                      @endforeach
-                  </select>
+                            <option value="">All Events </option>
+                            @foreach($types as $type)
+                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                            @endforeach
+                        </select>
                     </ul>
                 </div>
 
@@ -96,48 +96,51 @@
                 </button>
                 <!-- HERE WE ADD CITIES  -->
                 <div id="dropdown2" class="z-10 hidden bg-[#8448E5] divide-y divide-white rounded-lg shadow w-44">
-                <select id="cityFilter" class="block px-4 py-2 text-sm text-white bg-[#8448E5] rounded-lg shadow" aria-label="Select a city">
-    <option value="">All Cities</option>
-    @foreach($cities as $city)
-        <option value="{{ $city->id }}">{{ $city->name }}</option>
-    @endforeach
-</select>
+                    <select id="cityFilter" class="block px-4 py-2 text-sm text-white bg-[#8448E5] rounded-lg shadow" aria-label="Select a city">
+                        <option value="">All Cities</option>
+                        @foreach($cities as $city)
+                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="flex">
-    <input type="checkbox" id="brainsterFilter" class="peer hidden" />
-    <label for="brainsterFilter" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
-        py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> 
-        Brainster 
-    </label>
-    
-</div>
-<div class="flex">
-    <input type="checkbox" id="choose-me2" class="peer hidden" />
-    <label for="choose-me2" class="select-none cursor-pointer rounded-lg border-2 border-gray-200 py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200"> MOB </label>
-</div>
-<div class="flex">
-    <input type="checkbox" id="choose-me3" class="peer hidden" />
-    <label for="choose-me3" class="select-none cursor-pointer rounded-lg border-2 border-gray-200 py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200"> Laboratorium </label>
-</div>
-            </div>
-
-            <form class="max-w-md mx-auto">
-                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
-                    </div>
-                    <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
+                    <input type="checkbox" id="brainsterFilter" class="peer hidden" />
+                    <label for="brainsterFilter" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
+    py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200">
+                        Brainster
+                    </label>
                 </div>
-            </form>
+                <div class="flex">
+                    <input type="checkbox" id="mobFilter" class="peer hidden" />
+                    <label for="mobFilter" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
+    py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200">
+                        Mobs
+                    </label>
+                </div>
+                <div class="flex">
+                    <input type="checkbox" id="laboratoriumFilter" class="peer hidden" />
+                    <label for="laboratoriumFilter" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
+    py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200">
+                        Laboratorium
+                    </label>
+                </div>
+                <form class="max-w-md mx-auto">
+                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                        </div>
+                        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
+                    </div>
+                </form>
 
+            </div>
+            <div id="calendar" class="w-full text-white"></div>
         </div>
-        <div id="calendar" class="w-full text-white"></div>
-    </div>
-    <!-- </div> -->
+        <!-- </div> -->
     </div>
     <div class="flex flex-col items-center px-16 pt-8 pb-14 mt-32 w-full bg-black max-md:px-5 max-md:mt-10 max-md:max-w-full">
         <div class="flex flex-col items-center w-full max-w-[1678px] max-md:max-w-full">
@@ -197,6 +200,5 @@
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-
     </script>
     @endsection
