@@ -52,24 +52,15 @@
     <div class="thumbnail mt-10"></div>
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- <div id="eventsData" style="display: none;">{{ $events }}</div> -->
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
 
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
 
     <div class="flex flex-col mt-20 items-center self-center px-24 w-full">
         <div class="mt-16 flex items-center justify-center text-white">
             <div class="text-center">
                 <h1 class="text-4xl font-bold mb-4">Where are we going tonight?
                     <div class="inline-block relative">
-                        <div class="-z-10 absolute -right-0 -top-10 transform">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                <path fill="#df4e4e" d="M386.3 160H336c-17.7 0-32 14.3-32 32s14.3 32 32 32H464c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0s-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3s163.8-62.5 226.3 0L386.3 160z" />
-                            </svg>
+                        <div id="poz2" class="-z-10 absolute -right-0 -top-10 transform">
+                            <img src="./images/e12.png">
                         </div>
                     </div>
                 </h1>
@@ -77,8 +68,8 @@
         </div>
 
 
-        <div class="flex gap-5 justify-between mt-16 mb-16 w-full text-lg leading-8 text-white max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
-            <div class="flex gap-5 justify-between w-full m-auto font-medium max-md:flex-wrap">
+        <div class=" gap-5 justify-between mt-16 mb-16 w-full text-lg leading-8 text-white max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
+            <div class="!flex gap-5 !justify-between !w-full !m-auto font-medium max-md:flex-wrap">
 
                 <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white !bg-[#8448E5] hover:opacity focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">All Events <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path fill="#ffffff" d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
@@ -87,16 +78,13 @@
 
                 <div id="dropdown" class="z-10 hidden bg-[#8448E5] divide-y divide-white rounded-lg shadow w-44">
                     <ul class="py-2 text-sm text-white" aria-labelledby="dropdownDefaultButton">
-                        <li>
-                            <a href="#" class="flex items-center block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">All Events <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                    <path fill="#ffffff" d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
-                                </svg></a>
-                        </li>
-                        @foreach($types as $type)
-                        <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">{{ $type->name }}</a>
-                        </li>
-                        @endforeach
+
+                        <select id="eventTypeFilter" class="px-4 py-2 text-sm text-white bg-[#8448E5] border-none rounded-lg shadow">
+                            <option value="">All Events </option>
+                            @foreach($types as $type)
+                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                            @endforeach
+                        </select>
                     </ul>
                 </div>
 
@@ -107,60 +95,56 @@
                 </button>
                 <!-- HERE WE ADD CITIES  -->
                 <div id="dropdown2" class="z-10 hidden bg-[#8448E5] divide-y divide-white rounded-lg shadow w-44">
-                    <ul class="py-2 text-sm text-white" aria-labelledby="dropdownDefaultButton">
-                        <li>
-                            <a href="#" class="flex items-center block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">City <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                    <path fill="#ffffff" d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
-                                </svg></a>
-                        </li>
+                    <select id="cityFilter" class="block px-4 py-2 text-sm text-white bg-[#8448E5] rounded-lg shadow" aria-label="Select a city">
+                        <option value="">All Cities</option>
                         @foreach($cities as $city)
-                        <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-900">{{ $city->name }}</a>
-                        </li>
+                        <option value="{{ $city->id }}">{{ $city->name }}</option>
                         @endforeach
-                    </ul>
+                    </select>
                 </div>
 
                 <div class="flex">
-                    <input type="checkbox" id="choose-me" class="peer hidden" />
-                    <label for="choose-me" class="select-none cursor-pointer rounded-lg !border-2 border-gray-200
-      py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> Brainster </label>
+                    <input type="checkbox" id="brainsterFilter" class="peer hidden" />
+                    <label for="brainsterFilter" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
+    py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200">
+                        Brainster
+                    </label>
                 </div>
                 <div class="flex">
-                    <input type="checkbox" id="choose-me2" class="peer hidden" />
-                    <label for="choose-me2" class="select-none cursor-pointer rounded-lg !border-2 border-gray-200
-      py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> MOB </label>
+                    <input type="checkbox" id="mobFilter" class="peer hidden" />
+                    <label for="mobFilter" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
+    py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200">
+                        Mobs
+                    </label>
                 </div>
                 <div class="flex">
-                    <input type="checkbox" id="choose-me3" class="peer hidden" />
-                    <label for="choose-me3" class="select-none cursor-pointer rounded-lg !border-2 border-gray-200
-      py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> Laboratorium </label>
+                    <input type="checkbox" id="laboratoriumFilter" class="peer hidden" />
+                    <label for="laboratoriumFilter" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
+    py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200">
+                        Laboratorium
+                    </label>
                 </div>
-            </div>
-
-            <form class="max-w-md mx-auto">
-                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
+                <form class="max-w-md mx-auto">
+                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                        </div>
+                        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
                     </div>
-                    <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
-                </div>
-            </form>
+                </form>
 
+            </div>
+            <div id="calendar" class="w-full text-white !mt-12"></div>
         </div>
-        <div id="calendar" class="w-full text-white"></div>
-    </div>
-    <!-- </div> -->
+        <!-- </div> -->
     </div>
     <div class="flex flex-col items-center px-24 pt-8 pb-14 mt-32 w-full bg-black max-md:px-5 max-md:mt-10 max-md:max-w-full">
         <div class="flex flex-col items-center w-full max-w-[1678px] max-md:max-w-full">
             <div class="flex gap-5 justify-between items-center w-full max-w-[1366px] max-md:flex-wrap  max-md:max-w-full">
-                <svg xmlns="http://www.w3.org/2000/svg" class="!h-20 !w-20" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                    <path fill="#df4e4e" d="M386.3 160H336c-17.7 0-32 14.3-32 32s14.3 32 32 32H464c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0s-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3s163.8-62.5 226.3 0L386.3 160z" />
-                </svg>
+                <img src="./images/e22.png">
                 <div class="flex flex-col items-center self-stretch">
                     <img loading="lazy" src="./images/brainster-learn-logo 2.png" alt="Logo" class="mx-9 w-72 aspect-[7.69]" />
                     <div class="flex gap-4 mt-10 w-[356px] justify-center">
@@ -181,9 +165,7 @@
                         </a>
                     </div>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="!h-20 !w-20 transform rotate-180" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                    <path fill="#df4e4e" d="M386.3 160H336c-17.7 0-32 14.3-32 32s14.3 32 32 32H464c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0s-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3s163.8-62.5 226.3 0L386.3 160z" />
-                </svg>
+                <img src="./images/e23.png">
             </div>
             <div class="shrink-0 self-stretch mt-16 h-px border border-solid bg-neutral-600 border-neutral-600 max-md:mt-10 max-md:max-w-full"></div>
             <div class="flex justify-between mt-7 w-full text-sm text-white max-w-[1518px]">
@@ -196,21 +178,31 @@
     </div>
 
     <div id="multiEventModal" class="fixed inset-0 z-50 flex justify-center items-center backdrop-blur hidden">
-        <div id="mw" class=" p-8 rounded-lg w-1/3 h-3/5">
+        <div id="mw" class="p-8 rounded-lg w-1/3 h-3/5 relative">
             <div id="multiEventModalBody"></div>
-            <button id="closeMultiEventModal" class="mt-4 text-white bg-gray-800 px-4 py-2 rounded-md">Close</button>
+            <button id="closeMultiEventModal" class="absolute top-0 right-0 m-2 text-white bg-transparent px-3 py-2 rounded-full">
+                <span>&times;</span>
+            </button>
         </div>
     </div>
+    
 
     <div id="singleEventModal" class="fixed inset-0 z-50 flex justify-center items-center backdrop-blur hidden">
         <div class="bg-[#101010] text-white rounded-lg overflow-auto relative w-1/2">
             <div id="singleModalImageContainer"></div>
             <div id="singleModalContent" class="py-4"></div>
-            <button id="closeSingleModal" class="absolute top-0 right-0 m-2 text-white bg-gray-800 px-3 py-2 rounded-full">
+            <button id="closeSingleModal" class="absolute top-0 right-0 m-2 text-white bg-transparent px-3 py-2 rounded-full">
                 <span>&times;</span>
             </button>
         </div>
     </div>
     <script src="{{ asset('js/calendar.js') }}"></script>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
 
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
     @endsection

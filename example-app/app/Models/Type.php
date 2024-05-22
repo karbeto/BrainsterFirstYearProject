@@ -11,6 +11,6 @@ class Type extends Model
     use HasFactory;
     public function events()
     {
-        return $this->belongsTo(Event::class);
+        return $this->hasOne(Event::class);
     }
 }

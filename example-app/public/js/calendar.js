@@ -1,45 +1,106 @@
 document.addEventListener('DOMContentLoaded', function () {
     var eventsData = null;//document.getElementById('eventsData').textContent;
     var jsonData = null;//JSON.parse(eventsData);
+    var allEvents = null; // Store all events to reset the filter later
     fetch("/events")
         .then(res => res.json())
         .then(res => {
-            console.log('here', res);
             jsonData = res;
-            test()
-        })
+            allEvents = transformEvents(jsonData).events; // Store all events
+            initializeCalendar(allEvents);
+        });
 
-    // var jsonData = JSON.parse(eventsData);
-    decodeURI(jsonData);
+
+    document.getElementById('brainsterFilter').addEventListener('change', function () {
+        const calendar = document.getElementById('calendar').calendar;
+        calendar.refetchEvents();
+    });
+
+    document.getElementById('mobFilter').addEventListener('change', function () {
+        const calendar = document.getElementById('calendar').calendar;
+        calendar.refetchEvents();
+    });
+
+    document.getElementById('laboratoriumFilter').addEventListener('change', function () {
+        const calendar = document.getElementById('calendar').calendar;
+        calendar.refetchEvents();
+    });
+
+    // Function to get checked filters
+    function getCheckedFilters() {
+        const checkedFilters = [];
+        if (document.getElementById('brainsterFilter').checked) {
+            checkedFilters.push('Brainster');
+        }
+        if (document.getElementById('mobFilter').checked) {
+            checkedFilters.push('Mobs');
+        }
+        if (document.getElementById('laboratoriumFilter').checked) {
+            checkedFilters.push('Laboratorium');
+        }
+        return checkedFilters;
+    }
+
+    // Function to filter events based on checked filters
+    function filterEventsByCheckedFilters(events) {
+        const checkedFilters = getCheckedFilters();
+        console.log(checkedFilters);
+        if (checkedFilters.length === 0) {
+            return events; // Return all events if no filter is checked
+        }
+
+        const filteredEvents = [];
+        for (const event of events) {
+            const eventTitleLower = event.title.toLowerCase();
+            for (const filter of checkedFilters) {
+                if (eventTitleLower.includes(filter.toLowerCase())) {
+                    filteredEvents.push(event);
+                    break; // Once a match is found, no need to check further filters
+                }
+            }
+        }
+
+        return filteredEvents;
+    }
+
+
+
     function transformEvents(jsonData) {
         const events = [];
         const eventCountPerDay = {};
 
         jsonData.forEach(eventData => {
             const start = new Date(eventData.from);
-            const end = eventData.to ? new Date(eventData.to) : null; // Set end date to null if not specified
-            const dateString = start.toISOString().split('T')[0];
+            const end = new Date(eventData.to);
 
-            if (!eventCountPerDay[dateString]) {
-                eventCountPerDay[dateString] = 0;
-            }
-            eventCountPerDay[dateString]++;
-            events.push({
-                title: eventData.title,
-                start: dateString,
-                end_date: end ,
-                contact: eventData.contact,
-                ticket_price: eventData.ticket_price,
-                ticket_url: eventData.ticket_url,
-                location: eventData.location,
-                rendering: 'background',
-                extendedProps: {
-                    bgImage: eventData.image_url,
-                    bgColor: eventData.users.color,
-                    description: eventData.comment
+            // Iterate through each day between start and end date
+            for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+                const dateString = d.toISOString().split('T')[0];
+
+                if (!eventCountPerDay[dateString]) {
+                    eventCountPerDay[dateString] = 0;
                 }
-            });
-
+                eventCountPerDay[dateString]++;
+                events.push({
+                    title: eventData.title,
+                    start: dateString,
+                    start_date: start.toISOString().split('T')[1].split('.')[0].slice(0, 5),
+                    end_date: end.toISOString().split('T')[1].split('.')[0].slice(0, 5),
+                    contact: eventData.contact,
+                    ticket_price: eventData.ticket_price,
+                    ticket_url: eventData.ticket_url,
+                    location: eventData.location,
+                    rendering: 'background',
+                    extendedProps: {
+                        bgImage: eventData.image_url,
+                        bgColor: eventData.users.color,
+                        description: eventData.comment,
+                        type: eventData.type,
+                        city: eventData.city,
+                        city_name: eventData.city.name
+                    }
+                });
+            }
         });
         console.log('Transformed events:', events); // Add this line to log transformed events
         return {
@@ -48,13 +109,11 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
-    function test() {
-        const {
-            events,
-            eventCountPerDay
-        } = transformEvents(jsonData);
-        console.log('Transformededed events:', events); // Add this line
-        console.log('Event count per day:', eventCountPerDay); // Add this line
+    function initializeCalendar(events) {
+        // const {
+        //     events,
+        //     eventCountPerDay
+        // } = transformEvents(jsonData);
         const calendarEl = document.getElementById('calendar');
         const calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'customDayGrid',
@@ -91,7 +150,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             },
-            events: events,
+
+            events: function (fetchInfo, successCallback, failureCallback) {
+                const eventTypeFilter = parseInt(document.getElementById('eventTypeFilter').value);
+                const cityFilter = parseInt(document.getElementById('cityFilter').value);
+                const filteredEvents = filterEventsByCheckedFilters(allEvents).filter(event => filterEvents(allEvents, eventTypeFilter, cityFilter).includes(event));
+                console.log("filtered Events after click");
+                console.log(filteredEvents);
+                successCallback(filteredEvents);
+            },
 
             eventContent: function (info) {
                 const eventElement = document.createElement('div');
@@ -194,7 +261,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 eventElement.addEventListener('click', function (t) {
-                    console.log(t)
                     if (eventsOnDate.length > 1) {
                         // If there are multiple events on the clicked date, display the multi-event modal
                         const modalBody = document.getElementById('multiEventModalBody');
@@ -227,7 +293,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else {
                         // If there's only one event on the clicked date, display the single event modal
                         const singleEvent = eventsOnDate[0];
-                        console.log(singleEvent);
                         const singleModalContent = document.getElementById('singleModalContent');
                         const singleModalImageContainer = document.getElementById('singleModalImageContainer');
 
@@ -323,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         cityLabel.textContent = 'City:';
                         const cityValue = document.createElement('div');
                         cityValue.classList.add('event-value');
-                        cityValue.textContent = event.extendedProps.location;
+                        cityValue.textContent = event.extendedProps.city_name;
                         ticketCityRow.appendChild(cityLabel);
                         ticketCityRow.appendChild(cityValue);
 
@@ -379,7 +444,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         // Create close button
                         const closeButton = document.createElement('button');
                         closeButton.innerHTML = 'x'; // Close button as 'x'
-                        closeButton.classList.add('absolute', 'top-0', 'right-0', 'm-2', 'text-white', 'bg-black', 'p-2', 'rounded-full'); // Positioning and styling
+                        closeButton.classList.add('absolute', 'top-0', 'right-0', 'm-2', 'text-white', '!bg-transparent', 'p-2', 'rounded-full'); // Positioning and styling
                         closeButton.onclick = function () {
                             document.getElementById('singleEventModal').classList.add('hidden'); // Hide modal on click
                         };
@@ -387,10 +452,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
 
                     singleModalContent.innerHTML = `<div class="flex flex-col items-center justify-center text-center">
-                                                        <p>${singleEvent.title}</p>
-                                                        <p>Start: ${singleEvent.startStr}</p>
-                                                        <p>End: ${singleEvent.endStr}</p>
-                                                        <p>Description: ${singleEvent.extendedProps.description}</p>
+                                                        <h1 class="mb-4 text-2xl font-semibold">${singleEvent.title}</h1>
+                                                        <p>Start: ${singleEvent.extendedProps.start_date}</p>
+                                                        <p>End: ${singleEvent.extendedProps.end_date}</p>
+                                                        <p>Lokacija: ${singleEvent.extendedProps.location}</p>
+                                                        <p>Cena: ${singleEvent.extendedProps.ticket_price}</p>
+                                                        <p>Kontakt: ${singleEvent.extendedProps.contact}</p>
+                                                        <p>Promocija: -50% pijaloci</p>
+                                                        <p>link do karti: ${singleEvent.extendedProps.ticket_price}</p>
                                                     </div>`;
 
                     document.getElementById('singleEventModal').classList.remove('hidden');
@@ -402,13 +471,47 @@ document.addEventListener('DOMContentLoaded', function () {
                 center: 'title',
                 right: 'next'
             }
+
+        }
+
+        );
+        document.getElementById('calendar').calendar = calendar;
+
+        document.getElementById('eventTypeFilter').addEventListener('change', function () {
+            calendar.refetchEvents();
         });
 
-        calendar.render();
 
+        calendar.render();
+        function filterEvents(events, eventTypeFilter, cityFilter) {
+            if (!eventTypeFilter && !cityFilter) {
+                return events; // Return all events if no filter is applied
+            }
+
+            return events.filter(event => {
+                const typeMatch = eventTypeFilter ? event.extendedProps.type.id === parseInt(eventTypeFilter) : true;
+                const cityMatch = cityFilter ? event.extendedProps.city.id === parseInt(cityFilter) : true;
+                return typeMatch && cityMatch;
+            });
+        }
+
+        document.getElementById('eventTypeFilter').addEventListener('change', function () {
+            const calendar = document.getElementById('calendar').calendar;
+            calendar.refetchEvents();
+        });
+        document.getElementById('cityFilter').addEventListener('change', function () {
+            console.log("here")
+            const eventTypeFilter = parseInt(document.getElementById('eventTypeFilter').value);
+            const cityFilter = parseInt(this.value);
+            const calendar = document.getElementById('calendar').calendar;
+            calendar.refetchEvents();
+        });
         document.getElementById('closeMultiEventModal').addEventListener('click', function () {
             document.getElementById('multiEventModal').classList.add('hidden');
         });
+
+
+
 
         function displayEventInfoInModal(event) {
             const singleModalContent = document.getElementById('singleModalContent');
@@ -434,10 +537,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             singleModalContent.innerHTML = `<div class="flex flex-col items-center justify-center text-center">
-                                                        <p>${singleEvent.title}</p>
-                                                        <p>Start: ${singleEvent.startStr}</p>
-                                                        <p>End: ${singleEvent.endStr}</p>
-                                                        <p>Description: ${singleEvent.extendedProps.description}</p>
+            <h1 class="mb-4 text-2xl font-semibold">${singleEvent.title}</h1>
+            <p>Start: ${singleEvent.extendedProps.start_date}</p>
+            <p>End: ${singleEvent.extendedProps.end_date}</p>
+            <p>Lokacija: ${singleEvent.extendedProps.location}</p>
+            <p>Cena: ${singleEvent.extendedProps.ticket_price}</p>
+            <p>Kontakt: ${singleEvent.extendedProps.contact}</p>
+            <p>Promocija: -50% pijaloci</p>
+            <p>link do karti: ${singleEvent.extendedProps.ticket_price}</p>
                                                     </div>`;
 
             document.getElementById('singleEventModal').classList.remove('hidden');

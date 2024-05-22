@@ -6,7 +6,7 @@
 
 .fc-day-header {
     text-align: center;
-    border: none ;
+    border: none;
     background-color: transparent;
 }
 
@@ -19,12 +19,12 @@
     border: none;
 }
 
-.fc-scrollgrid td:last-of-type{
+.fc-scrollgrid td:last-of-type {
     border: none;
 }
 
 #calendar .fc-daygrid.fc-customDayGrid-view.fc-view {
-    border: none ;
+    border: none;
 }
 
 .fc td,
@@ -123,7 +123,7 @@
     font-weight: bold;
     text-align: center;
     white-space: normal;
-    word-wrap: break-word; 
+    word-wrap: break-word;
     overflow: hidden;
 }
 
@@ -178,6 +178,7 @@
     overflow-y: auto;
     background-color: #101010;
 }
+
 event-info {
     padding: 10px;
 }
@@ -188,9 +189,11 @@ event-info {
     justify-content: space-between;
     margin-bottom: 5px;
 }
+
 .event-value {
     /* Limit the width of the value container */
-    max-width: 100%; /* Adjust as needed */
+    max-width: 100%;
+    /* Adjust as needed */
     /* Truncate text if it overflows */
     white-space: nowrap;
     overflow: hidden;
@@ -204,7 +207,8 @@ event-info {
 
 /* Styles for the value of each piece of info */
 .event-value {
-    flex-grow: 1; /* Ensure the value takes up remaining space */
+    flex-grow: 1;
+    /* Ensure the value takes up remaining space */
 }
 
 
@@ -225,7 +229,7 @@ event-info {
     align-items: center;
     margin: 0;
     white-space: normal;
-    word-wrap: break-word; 
+    word-wrap: break-word;
     word-break: break-all;
     overflow: hidden;
 }
@@ -235,34 +239,43 @@ event-info {
 }
 
 ::-webkit-scrollbar {
-    width: 12px;               /* width of the entire scrollbar */
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: white;  
-    border-radius: 20px;      /* color of the tracking area */
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: #8448E5;    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 1px solid #8448E5;  /* creates padding around scroll thumb */
-  }
+    width: 12px;
+    /* width of the entire scrollbar */
+}
 
-  #multiEventModalBody{
+::-webkit-scrollbar-track {
+    background: white;
+    border-radius: 20px;
+    /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #8448E5;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 1px solid #8448E5;
+    /* creates padding around scroll thumb */
+}
+
+#multiEventModalBody {
     display: flex;
     flex-direction: column;
     gap: 20px;
-  }
-  .fc-daygrid-event-harness{
+}
+
+.fc-daygrid-event-harness {
     margin-top: 0 !important;
-  }
-  .fc-daygrid-day-bottom{
+}
+
+.fc-daygrid-day-bottom {
     margin-top: 0 !important;
-  }
-  .fc .fc-daygrid-event-harness-abs{
+}
+
+.fc .fc-daygrid-event-harness-abs {
     position: static !important;
-  }
+}
+
 .fc-daygrid-event-harness {
     margin-bottom: 5px;
 }
@@ -270,6 +283,16 @@ event-info {
 .fc-daygrid-event-harness:last-of-type {
     margin-bottom: 0;
 }
-*,:after,:before {
+
+*,
+:after,
+:before {
     border: 0 solid #e5e7eb !important;
+}
+
+#poz2 img {
+    height: unset !important;
+    width: unset !important;
+    max-width: unset !important;
+    max-height: unset !important;
 }

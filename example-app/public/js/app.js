@@ -28,6 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 <img src="${slide.image_url}">
                 <div class="content">
                     <p>design</p>
+                    <div id="poz2" class="inline-block relative">
+                        <div id="poz2" class="-z-10 absolute -left-0 -top-10 transform">
+                            <img src="./images/e1.png">
+                        </div>
+                    </div>
                     <h2>${slide.title}</h2>
                     <p>${slide.comment}</p>
                 </div>
