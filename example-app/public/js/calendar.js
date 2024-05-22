@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         jsonData.forEach(eventData => {
             const start = new Date(eventData.from);
-            const end = new Date(eventData.to);
+            const end = eventData.to ? new Date(eventData.to) : null; // Set end date to null if not specified
             const dateString = start.toISOString().split('T')[0];
 
             if (!eventCountPerDay[dateString]) {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
             events.push({
                 title: eventData.title,
                 start: dateString,
-                end: '',
+                end_date: end ,
                 contact: eventData.contact,
                 ticket_price: eventData.ticket_price,
                 ticket_url: eventData.ticket_url,
@@ -35,14 +35,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 rendering: 'background',
                 extendedProps: {
                     bgImage: eventData.image_url,
-                    bgColor: eventData.color,
+                    bgColor: eventData.users.color,
                     description: eventData.comment
                 }
             });
 
-            console.log('events', events);
         });
-
+        console.log('Transformed events:', events); // Add this line to log transformed events
         return {
             events,
             eventCountPerDay
@@ -54,6 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
             events,
             eventCountPerDay
         } = transformEvents(jsonData);
+        console.log('Transformededed events:', events); // Add this line
+        console.log('Event count per day:', eventCountPerDay); // Add this line
         const calendarEl = document.getElementById('calendar');
         const calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'customDayGrid',
@@ -126,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const titleContainer = document.createElement('div');
                     titleContainer.classList.add('event-title', 'mb-2'); // Add margin bottom using Tailwind class
                     titleContainer.textContent = info.event.title;
-                    titleContainer.style.backgroundColor = info.event.extendedProps.bgColor; // Event color
+                    container.style.backgroundColor = info.event.extendedProps.bgColor; // Event color
                     // titleContainer.style.height = '50%'; // 50% height
                     container.appendChild(titleContainer);
                     eventElement.appendChild(container);
@@ -167,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const titleContainer = document.createElement('div');
                     titleContainer.classList.add('event-title');
                     titleContainer.textContent = info.event.title;
-                    titleContainer.style.backgroundColor = info.event.extendedProps.bgColor; // Event color
+                    container.style.backgroundColor = info.event.extendedProps.bgColor; // Event color
                     titleContainer.style.height = '20%'; // 20% height
 
                     container.appendChild(titleContainer);
@@ -201,7 +202,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         eventsOnDate.forEach(event => {
                             const eventElement = document.createElement('div');
-                            console.log(event.extendedProps);
 
                             eventElement.classList.add('custom-event', event.extendedProps.bgColor);
 
@@ -263,31 +263,108 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     eventsOnDate.forEach(event => {
                         const eventElement = document.createElement('div');
-                        eventElement.classList.add('custom-event', 'w-full');
+                        eventElement.classList.add('custom-event', 'w-full', '!h-48');
                         eventElement.style.backgroundColor = event.extendedProps.bgColor;
 
                         if (event.extendedProps.bgImage) {
                             const imageElement = document.createElement('img');
                             imageElement.src = event.extendedProps.bgImage;
                             imageElement.style.width = '100%';
-                            imageElement.style.height = '50px';
+                            imageElement.style.height = '50%';
                             eventElement.appendChild(imageElement);
                         }
 
-                        const textElement = document.createElement('div');
-                        textElement.classList.add('event-title');
-                        textElement.textContent = event.title;
-                        eventElement.appendChild(textElement);
+                        const infoContainer = document.createElement('div');
+                        infoContainer.classList.add('event-info');
+
+                        // First row: Time and Title
+                        const timeTitleRow = document.createElement('div');
+                        timeTitleRow.classList.add('info-row');
+
+                        // Time
+                        const timeLabel = document.createElement('div');
+                        timeLabel.classList.add('event-label');
+                        timeLabel.textContent = 'Time:';
+                        const timeValue = document.createElement('div');
+                        timeValue.classList.add('event-value');
+                        timeValue.textContent = event.start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                        timeTitleRow.appendChild(timeLabel);
+                        timeTitleRow.appendChild(timeValue);
+
+                        // Title
+                        const titleLabel = document.createElement('div');
+                        titleLabel.classList.add('event-label');
+                        titleLabel.textContent = 'Title:';
+                        const titleValue = document.createElement('div');
+                        titleValue.classList.add('event-value');
+                        titleValue.textContent = event.title;
+                        timeTitleRow.appendChild(titleLabel);
+                        timeTitleRow.appendChild(titleValue);
+
+                        infoContainer.appendChild(timeTitleRow);
+
+                        // Second row: Ticket Price and City
+                        const ticketCityRow = document.createElement('div');
+                        ticketCityRow.classList.add('info-row');
+
+                        // Ticket Price
+                        const ticketLabel = document.createElement('div');
+                        ticketLabel.classList.add('event-label');
+                        ticketLabel.textContent = 'Ticket Price:';
+                        const ticketValue = document.createElement('div');
+                        ticketValue.classList.add('event-value');
+                        ticketValue.textContent = event.extendedProps.ticket_price;
+                        ticketCityRow.appendChild(ticketLabel);
+                        ticketCityRow.appendChild(ticketValue);
+
+                        // City
+                        const cityLabel = document.createElement('div');
+                        cityLabel.classList.add('event-label');
+                        cityLabel.textContent = 'City:';
+                        const cityValue = document.createElement('div');
+                        cityValue.classList.add('event-value');
+                        cityValue.textContent = event.extendedProps.location;
+                        ticketCityRow.appendChild(cityLabel);
+                        ticketCityRow.appendChild(cityValue);
+
+                        infoContainer.appendChild(ticketCityRow);
+
+                        // Third row: Contact and Drinks
+                        const contactDrinksRow = document.createElement('div');
+                        contactDrinksRow.classList.add('info-row');
+
+                        // Contact
+                        const contactLabel = document.createElement('div');
+                        contactLabel.classList.add('event-label');
+                        contactLabel.textContent = 'Contact:';
+                        const contactValue = document.createElement('div');
+                        contactValue.classList.add('event-value');
+                        contactValue.textContent = event.extendedProps.contact;
+                        contactDrinksRow.appendChild(contactLabel);
+                        contactDrinksRow.appendChild(contactValue);
+
+                        // Drinks
+                        const drinksLabel = document.createElement('div');
+                        drinksLabel.classList.add('event-label');
+                        drinksLabel.textContent = '-20% Drinks:';
+                        const drinksValue = document.createElement('div');
+                        contactDrinksRow.appendChild(drinksLabel);
+
+                        infoContainer.appendChild(contactDrinksRow);
+
+                        // Append info container to the event element
+                        eventElement.appendChild(infoContainer);
 
                         // Add data-start attribute to event element
                         eventElement.dataset.start = event.start.toISOString().split('T')[0];
-
+                        eventElement.addEventListener('click', function () { });
                         modalBody.appendChild(eventElement);
                     });
 
                     document.getElementById('multiEventModal').classList.remove('hidden');
                 } else if (eventsOnDate.length === 1) {
                     const singleEvent = eventsOnDate[0];
+                    console.log(singleEvent);
                     const singleModalContent = document.getElementById('singleModalContent');
                     const singleModalImageContainer = document.getElementById('singleModalImageContainer');
 
@@ -296,15 +373,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         const imgElement = document.createElement('img');
                         imgElement.src = singleEvent.extendedProps.bgImage;
-                        imgElement.classList.add('w-full', 'h-64', 'object-cover');
+                        imgElement.classList.add('w-full', 'h-64', 'object-cover', 'relative'); // Adding relative positioning
                         singleModalImageContainer.appendChild(imgElement);
+
+                        // Create close button
+                        const closeButton = document.createElement('button');
+                        closeButton.innerHTML = 'x'; // Close button as 'x'
+                        closeButton.classList.add('absolute', 'top-0', 'right-0', 'm-2', 'text-white', 'bg-black', 'p-2', 'rounded-full'); // Positioning and styling
+                        closeButton.onclick = function () {
+                            document.getElementById('singleEventModal').classList.add('hidden'); // Hide modal on click
+                        };
+                        imgElement.appendChild(closeButton); // Append close button to image container
                     }
 
-
-                    singleModalContent.innerHTML = `<p>${singleEvent.title}</p><p>Start: ${singleEvent.startStr}</p><p>Description: ${singleEvent.extendedProps.description}</p>`;
+                    singleModalContent.innerHTML = `<div class="flex flex-col items-center justify-center text-center">
+                                                        <p>${singleEvent.title}</p>
+                                                        <p>Start: ${singleEvent.startStr}</p>
+                                                        <p>End: ${singleEvent.endStr}</p>
+                                                        <p>Description: ${singleEvent.extendedProps.description}</p>
+                                                    </div>`;
 
                     document.getElementById('singleEventModal').classList.remove('hidden');
                 }
+
             },
             headerToolbar: {
                 left: 'prev',
@@ -321,43 +412,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function displayEventInfoInModal(event) {
             const singleModalContent = document.getElementById('singleModalContent');
+            const singleEvent = event;
             const singleModalImageContainer = document.getElementById('singleModalImageContainer');
 
-            if (event.extendedProps.bgImage) {
+            if (singleEvent.extendedProps.bgImage) {
                 singleModalImageContainer.innerHTML = ''; // Clear previous images
 
                 const imgElement = document.createElement('img');
-                imgElement.src = event.extendedProps.bgImage;
-                imgElement.classList.add('w-full', 'h-64', 'object-cover');
+                imgElement.src = singleEvent.extendedProps.bgImage;
+                imgElement.classList.add('w-full', 'h-64', 'object-cover', 'relative'); // Adding relative positioning
                 singleModalImageContainer.appendChild(imgElement);
+
+                // Create close button
+                const closeButton = document.createElement('button');
+                closeButton.innerHTML = 'x'; // Close button as 'x'
+                closeButton.classList.add('absolute', 'top-0', 'right-0', 'm-2', 'text-white', 'bg-black', 'p-2', 'rounded-full'); // Positioning and styling
+                closeButton.onclick = function () {
+                    document.getElementById('singleEventModal').classList.add('hidden'); // Hide modal on click
+                };
+                imgElement.appendChild(closeButton); // Append close button to image container
             }
 
-            singleModalContent.innerHTML = `<p>${event.title}</p><p>Start: ${event.startStr}</p><p>Description: ${event.extendedProps.description}</p>`;
+            singleModalContent.innerHTML = `<div class="flex flex-col items-center justify-center text-center">
+                                                        <p>${singleEvent.title}</p>
+                                                        <p>Start: ${singleEvent.startStr}</p>
+                                                        <p>End: ${singleEvent.endStr}</p>
+                                                        <p>Description: ${singleEvent.extendedProps.description}</p>
+                                                    </div>`;
 
             document.getElementById('singleEventModal').classList.remove('hidden');
         }
 
         document.getElementById('multiEventModalBody').addEventListener('click', function (event) {
-
-            // Traverse up the DOM tree until we find an element with the 'custom-event' class
-            let clickedElement = event.target;
-            while (clickedElement) {
-                if (clickedElement.classList.contains('custom-event')) {
-                    break;
-                }
-                clickedElement = clickedElement.parentElement;
-            }
-
-            // If we found an element with the 'custom-event' class, proceed to handle the click
-            if (clickedElement && clickedElement.classList.contains('custom-event')) {
+            const clickedElement = event.target.closest('.custom-event');
+            if (clickedElement) {
                 const clickedDate = clickedElement.dataset.start;
-
                 const eventsOnDate = calendar.getEvents().filter(eventItem => {
                     return eventItem.start.toISOString().split('T')[0] === clickedDate;
                 });
 
-                // Find the clicked event within the eventsOnDate array
-                const eventTitleElement = clickedElement.querySelector('.event-title');
+                const eventTitleElement = clickedElement.querySelector('.event-value:nth-child(4)');
                 if (eventTitleElement) {
                     const clickedEvent = eventsOnDate.find(eventItem => {
                         return eventItem.title === eventTitleElement.textContent;
@@ -365,10 +459,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     if (clickedEvent) {
                         displayEventInfoInModal(clickedEvent);
+                        document.getElementById('multiEventModal').classList.add('hidden');
                     }
                 }
             }
         });
+
+
+
 
 
         // Function to show multi-event modal and overlay

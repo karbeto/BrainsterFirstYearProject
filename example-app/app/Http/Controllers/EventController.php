@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class EventController extends Controller
 {
     public function index(){
-        $events = Event::with('users')->get()->toJson();
+        $events = null;
         $types = Type::all();
         $cities = City::all();
         return view("app.index" , compact('events', 'types', 'cities'));
@@ -37,7 +37,7 @@ class EventController extends Controller
         ]);
     
         $event = new Event();
-        $event->user_id = 1; // Assuming user_id 1 for now
+        $event->users_id = 1; // Assuming user_id 1 for now
         $event->type_id = $request->type;
         $event->city_id = $request->location;
         $event->title = $validatedData['title'];
@@ -57,7 +57,6 @@ class EventController extends Controller
     public function all() 
     {
         $events = Event::with('users')->get();
-
         return response()->json($events);
     }
 }

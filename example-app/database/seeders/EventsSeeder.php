@@ -28,7 +28,7 @@ class EventsSeeder extends Seeder
         //     'location' => 'skopje-centar',
         // ]);
         Event::create([
-            'user_id' => 1,
+            'users_id' => 1,
             'type_id' => 1,
             'city_id' => 1,
             'title' => 'Tech Conference',
@@ -44,7 +44,7 @@ class EventsSeeder extends Seeder
         
         // Event 3
         Event::create([
-            'user_id' => 2,
+            'users_id' => 2,
             'type_id' => 1,
             'city_id' => 5,
             'title' => 'Art Exhibition',
@@ -60,7 +60,7 @@ class EventsSeeder extends Seeder
         
         // Event 4
         Event::create([
-            'user_id' => 2,
+            'users_id' => 2,
             'type_id' => 1,
             'city_id' => 8,
             'title' => 'Music Festival',
@@ -76,7 +76,7 @@ class EventsSeeder extends Seeder
         
         // Event 5
         Event::create([
-            'user_id' => 1,
+            'users_id' => 1,
             'type_id' => 1,
             'city_id' => 12,
             'title' => 'Startup Pitch Competition',

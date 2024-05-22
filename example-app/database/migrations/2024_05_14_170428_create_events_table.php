@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('users_id');
             $table->unsignedBigInteger('type_id');
             $table->unsignedBigInteger('city_id');
             $table->string('title');
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('city_id')->references('id')->on('cities');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('users_id')->references('id')->on('users');
             $table->foreign('type_id')->references('id')->on('types');
         });
     }

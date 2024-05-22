@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\City;
 use App\Models\Type;
-use App\Models\User;
+use App\Models\Users;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -13,7 +13,7 @@ class Event extends Model
     use HasFactory;
     public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Users::class);
     }
     public function types()
     {

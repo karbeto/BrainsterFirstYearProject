@@ -8,13 +8,13 @@
 <body class="bg-gray-900 text-white">
     <div class="flex flex-col items-center self-center px-5 py-10 w-full">
         <!-- Desktop Navbar -->
-        <div class="sm:hidden md:flex md:flex-row gap-7 px-10 justify-between w-full text-lg leading-8 text-white max-w-[1520px]">
+        <div class="hidden md:!flex md:flex-row gap-7 px-10 justify-between w-full text-lg leading-8 text-white">
             <div class="self-center">
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6b051c7484d9d0153007283d96798e85af413ba0ce5ae7beead6b6617ba9dd44?apiKey=7925220406f349788b6d4a92c76ee210&" alt="Logo" class="shrink-0 my-auto w-48 md:w-60 max-w-full aspect-[7.69]" />
             </div>
             <div class="flex gap-8 justify-between items-center">
-                <a href="#" class="px-10 py-2 bg-violet-600 rounded-xl">Log In</a>
-                <a href="#" class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Register</a>
+                <a href="{{route("login")}}" class="px-10 py-2 bg-violet-600 rounded-xl">Log In</a>
+                <a href="{{route("register")}}" class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Register</a>
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8dafc9d6c564e37439e71d2f82259a6b72fdfaff1806f391b9b60d0d9ed230a1?apiKey=7925220406f349788b6d4a92c76ee210&" alt="User icon" class="shrink-0 my-auto aspect-square w-8 md:w-[35px]" />
             </div>
         </div>
@@ -40,13 +40,14 @@
     </div>
 
 
+<div class="px-24 w-full">
 
     <!--Here is the side bar -->
     <div class="slider">
         <!-- Dynamic list of slider items -->
         <div class="list"></div>
         <!-- Dynamic thumbnails -->
-
+    </div>
     </div>
     <div class="thumbnail mt-10"></div>
     <script src="{{ asset('js/app.js') }}"></script>
@@ -76,10 +77,10 @@
         </div>
 
 
-        <div class="flex gap-5 justify-between mt-16 mb-16 w-full text-lg leading-8 text-white max-w-[1520px] max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
+        <div class="flex gap-5 justify-between mt-16 mb-16 w-full text-lg leading-8 text-white max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
             <div class="flex gap-5 justify-between w-full m-auto font-medium max-md:flex-wrap">
 
-                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-[#8448E5] hover:opacity focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">All Events <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white !bg-[#8448E5] hover:opacity focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">All Events <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path fill="#ffffff" d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
                     </svg>
                 </button>
@@ -100,7 +101,7 @@
                 </div>
 
 
-                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown2" class="text-white bg-[#8448E5] hover:opacity focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">City <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown2" class="text-white !bg-[#8448E5] hover:opacity focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">City <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path fill="#ffffff" d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
                     </svg>
                 </button>
@@ -122,17 +123,17 @@
 
                 <div class="flex">
                     <input type="checkbox" id="choose-me" class="peer hidden" />
-                    <label for="choose-me" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
+                    <label for="choose-me" class="select-none cursor-pointer rounded-lg !border-2 border-gray-200
       py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> Brainster </label>
                 </div>
                 <div class="flex">
                     <input type="checkbox" id="choose-me2" class="peer hidden" />
-                    <label for="choose-me2" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
+                    <label for="choose-me2" class="select-none cursor-pointer rounded-lg !border-2 border-gray-200
       py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> MOB </label>
                 </div>
                 <div class="flex">
                     <input type="checkbox" id="choose-me3" class="peer hidden" />
-                    <label for="choose-me3" class="select-none cursor-pointer rounded-lg border-2 border-gray-200
+                    <label for="choose-me3" class="select-none cursor-pointer rounded-lg !border-2 border-gray-200
       py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-[#8448E5] peer-checked:border-gray-200 "> Laboratorium </label>
                 </div>
             </div>
@@ -154,10 +155,12 @@
     </div>
     <!-- </div> -->
     </div>
-    <div class="flex flex-col items-center px-16 pt-8 pb-14 mt-32 w-full bg-black max-md:px-5 max-md:mt-10 max-md:max-w-full">
+    <div class="flex flex-col items-center px-24 pt-8 pb-14 mt-32 w-full bg-black max-md:px-5 max-md:mt-10 max-md:max-w-full">
         <div class="flex flex-col items-center w-full max-w-[1678px] max-md:max-w-full">
             <div class="flex gap-5 justify-between items-center w-full max-w-[1366px] max-md:flex-wrap  max-md:max-w-full">
-                <img loading="lazy" src="./images/brainster-learn-logo 2.png" alt="Logo" class="shrink-0 self-stretch my-auto w-14 bg-rose-500 rounded-full aspect-[0.78]" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="!h-20 !w-20" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path fill="#df4e4e" d="M386.3 160H336c-17.7 0-32 14.3-32 32s14.3 32 32 32H464c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0s-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3s163.8-62.5 226.3 0L386.3 160z" />
+                </svg>
                 <div class="flex flex-col items-center self-stretch">
                     <img loading="lazy" src="./images/brainster-learn-logo 2.png" alt="Logo" class="mx-9 w-72 aspect-[7.69]" />
                     <div class="flex gap-4 mt-10 w-[356px] justify-center">
@@ -178,7 +181,9 @@
                         </a>
                     </div>
                 </div>
-                <img loading="lazy" src="./images/brainster-learn-logo 2.png" class="shrink-0 self-stretch my-auto w-14 bg-rose-500 rounded-full aspect-[0.78]" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="!h-20 !w-20 transform rotate-180" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path fill="#df4e4e" d="M386.3 160H336c-17.7 0-32 14.3-32 32s14.3 32 32 32H464c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0s-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3s163.8-62.5 226.3 0L386.3 160z" />
+                </svg>
             </div>
             <div class="shrink-0 self-stretch mt-16 h-px border border-solid bg-neutral-600 border-neutral-600 max-md:mt-10 max-md:max-w-full"></div>
             <div class="flex justify-between mt-7 w-full text-sm text-white max-w-[1518px]">
@@ -191,17 +196,19 @@
     </div>
 
     <div id="multiEventModal" class="fixed inset-0 z-50 flex justify-center items-center backdrop-blur hidden">
-        <div id="mw" class=" p-8 rounded-lg w-1/5">
+        <div id="mw" class=" p-8 rounded-lg w-1/3 h-3/5">
             <div id="multiEventModalBody"></div>
             <button id="closeMultiEventModal" class="mt-4 text-white bg-gray-800 px-4 py-2 rounded-md">Close</button>
         </div>
     </div>
 
-    <div id="singleEventModal" class="fixed inset-0 z-50 flex justify-center items-center backdrop-blur hidden w-1/2">
-        <div class="bg-[#101010] text-white rounded-lg overflow-auto">
+    <div id="singleEventModal" class="fixed inset-0 z-50 flex justify-center items-center backdrop-blur hidden">
+        <div class="bg-[#101010] text-white rounded-lg overflow-auto relative w-1/2">
             <div id="singleModalImageContainer"></div>
-            <div id="singleModalContent" class="p-8"></div>
-            <button id="closeSingleModal" class="mt-4 text-white bg-gray-800 px-4 py-2 rounded-md">Close</button>
+            <div id="singleModalContent" class="py-4"></div>
+            <button id="closeSingleModal" class="absolute top-0 right-0 m-2 text-white bg-gray-800 px-3 py-2 rounded-full">
+                <span>&times;</span>
+            </button>
         </div>
     </div>
     <script src="{{ asset('js/calendar.js') }}"></script>

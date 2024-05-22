@@ -91,7 +91,7 @@
 }
 
 .fc .fc-toolbar-title {
-    border: 1px solid #8448E5;
+    border: 1px solid #8448E5 !important;
     padding: 0.2em 5.5em;
     border-radius: 5px;
     overflow: hidden;
@@ -122,6 +122,9 @@
     font-size: 14px;
     font-weight: bold;
     text-align: center;
+    white-space: normal;
+    word-wrap: break-word; 
+    overflow: hidden;
 }
 
 .custom-event img {
@@ -175,10 +178,35 @@
     overflow-y: auto;
     background-color: #101010;
 }
-
-.mw .custom-event {
-    width: 40%;
+event-info {
+    padding: 10px;
 }
+
+/* Styles for each row of info */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.event-value {
+    /* Limit the width of the value container */
+    max-width: 100%; /* Adjust as needed */
+    /* Truncate text if it overflows */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Styles for the label of each piece of info */
+.event-label {
+    font-weight: bold;
+}
+
+/* Styles for the value of each piece of info */
+.event-value {
+    flex-grow: 1; /* Ensure the value takes up remaining space */
+}
+
 
 .single-event {
     display: flex;
@@ -196,13 +224,14 @@
     justify-content: center;
     align-items: center;
     margin: 0;
+    white-space: normal;
+    word-wrap: break-word; 
+    word-break: break-all;
+    overflow: hidden;
 }
 
 .event-image {
     margin: 0;
-}
-#singleModalImageContainer img{
-    width: 80%;
 }
 
 ::-webkit-scrollbar {
@@ -234,3 +263,13 @@
   .fc .fc-daygrid-event-harness-abs{
     position: static !important;
   }
+.fc-daygrid-event-harness {
+    margin-bottom: 5px;
+}
+
+.fc-daygrid-event-harness:last-of-type {
+    margin-bottom: 0;
+}
+*,:after,:before {
+    border: 0 solid #e5e7eb !important;
+}
