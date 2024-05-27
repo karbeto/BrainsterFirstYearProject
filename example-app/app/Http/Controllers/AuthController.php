@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\UserController;
-use app\Models\Users;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterUser;
 use Illuminate\Support\Facades\Log;
@@ -17,17 +17,20 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
-        $user = Users::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
 
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 session()->put('email', $request->email);
+                session()->put('id', $request->id);
+                return redirect()->route("view-events");
             }
         } else {
             Log::critical('User failed to login ' . $request->email);
+            return redirect()->route('login');
         }
 
-        return redirect()->route('dashboard');
+       
     }
     public function indexRegister()
     {
@@ -36,10 +39,18 @@ class AuthController extends Controller
     public function register(RegisterUser $request)
     {
 
-        Users::create(['name' => $request->name, 'email' => $request->email, 'password' => Hash::make($request->password), 'company' => $request->company]);
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->company = $request->company;
+        $user->color = "purple";
+        $user->save();
+
+
 
         session()->flash('msg', 'User created');
 
-        return redirect()->route('auth.indexLogin');
+        return redirect()->route('login');
     }
 }

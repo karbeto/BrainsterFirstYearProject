@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
@@ -24,7 +24,7 @@ class UserController extends Controller
             'company' => 'required|string|max:255',
         ]);
 
-        $user = Users::create([
+        $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
