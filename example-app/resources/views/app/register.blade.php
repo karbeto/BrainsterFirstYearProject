@@ -3,6 +3,12 @@
 @section('title', 'Sign Up')
 
 @section('content')
+@if ($errors->any())
+        <h2>Errors</h2>
+        @foreach ($errors->all() as $error)
+            {{ $error }}
+        @endforeach
+    @endif
 <section class="bg-gray-900">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
@@ -13,7 +19,7 @@
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-[#8448e5] md:text-2xl slide-in">
                     Create your account
                 </h1>
-                <form class="space-y-4 md:space-y-6" action="#">
+                <form class="space-y-4 md:space-y-6" method="POST" action="{{ route('auth.register') }}">
                     <div>
                         <label for="name" class="block mb-2 text-sm font-medium text-[#8448e5]">Your name</label>
                         <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" placeholder="John Doe" required="">
@@ -50,6 +56,7 @@
                             </div>
                         </div>
                     </div>
+                    @csrf
                     <button type="submit" class="w-full p-2 rounded-xl box-border text-white bg-purple-600 hover:bg-[#101010]">Sign up</button>
                     <p class="text-sm font-light text-gray-500">
                         Already have an account? <a href="{{ route('login') }}" class="font-medium text-[#f54646] hover:underline">Log in</a>
