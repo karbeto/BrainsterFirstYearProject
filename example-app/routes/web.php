@@ -13,6 +13,7 @@ Route::get('/login', [AuthController::class, 'indexLogin'])->name('auth.indexLog
 Route::get('/register', [AuthController::class, 'indexRegister'])->name('auth.indexRegister');
 Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 // Middleware-protected routes
 Route::middleware(AuthMiddleware::class)->group(function () {

@@ -32,13 +32,23 @@ class AuthController extends Controller
             return redirect()->route('auth.indexLogin')->withErrors(['email' => 'Email not found']);
         }
     }
+   
+    public function logout()
+    {
+        session()->flush(); 
+        return redirect()->route('view-events');
+    }
     public function indexRegister()
     {
         return view('app.register');
     }
     public function register(RegisterUser $request)
-    {
-
+{
+    try {
+    
+        if (User::where('email', $request->email)->exists()) {
+            return redirect()->back()->withErrors(['email' => 'Email already exists'])->withInput();
+        }
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -47,10 +57,13 @@ class AuthController extends Controller
         $user->color = "purple";
         $user->save();
 
-
-
         session()->flash('msg', 'User created');
 
         return redirect()->route('auth.login');
+    } catch (\Exception $e) {
+        Log::error('Error creating user: ' . $e->getMessage());
+        return redirect()->back()->withErrors(['general' => 'An error occurred while creating the user. Please try again later.'])->withInput();
     }
+}
+
 }

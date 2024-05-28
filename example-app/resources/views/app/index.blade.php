@@ -13,9 +13,16 @@
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6b051c7484d9d0153007283d96798e85af413ba0ce5ae7beead6b6617ba9dd44?apiKey=7925220406f349788b6d4a92c76ee210&" alt="Logo" class="shrink-0 my-auto w-48 md:w-60 max-w-full aspect-[7.69]" />
             </div>
             <div class="flex gap-8 justify-between items-center">
-                <a href=
-                '{{route("auth.login")}}' class="px-10 py-2 bg-violet-600 rounded-xl">Log In</a>
-                <a href='{{route("auth.register")}}' class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Register</a>
+            @if(session()->has('email'))
+                    <a href="#" class="px-10 py-2 bg-violet-600 rounded-xl">Dashboard</a>
+                    <form method="POST" action="{{ route('auth.logout') }}">
+                        @csrf
+                        <button type="submit" class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Log Out</button>
+                    </form>
+                @else
+                    <a href='{{ route("auth.login") }}' class="px-10 py-2 bg-violet-600 rounded-xl">Log In</a>
+                    <a href='{{ route("auth.register") }}' class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Register</a>
+                @endif
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8dafc9d6c564e37439e71d2f82259a6b72fdfaff1806f391b9b60d0d9ed230a1?apiKey=7925220406f349788b6d4a92c76ee210&" alt="User icon" class="shrink-0 my-auto aspect-square w-8 md:w-[35px]" />
             </div>
         </div>
@@ -31,8 +38,16 @@
                 </div>
             </div>
             <div class="hidden flex-col gap-4 mt-10 px-5" id="mobileMenu">
-                <a href="#" class="block px-4 py-2 bg-custom-purple rounded-xl text-center">Log In</a>
-                <a href="#" class="block px-4 m-5 py-2 border border-violet-600 border-solid rounded-xl text-center">Register</a>
+            @if(session()->has('email'))
+                    <a href="#" class="px-10 py-2 bg-violet-600 rounded-xl">Dashboard</a>
+                    <form method="POST" action="{{ route('auth.logout') }}">
+                        @csrf
+                        <button type="submit" class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Log Out</button>
+                    </form>
+                @else
+                    <a href='{{ route("auth.login") }}' class="px-10 py-2 bg-violet-600 rounded-xl">Log In</a>
+                    <a href='{{ route("auth.register") }}' class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Register</a>
+                @endif
                 <div class="flex justify-center">
                     <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8dafc9d6c564e37439e71d2f82259a6b72fdfaff1806f391b9b60d0d9ed230a1?apiKey=7925220406f349788b6d4a92c76ee210&" alt="User icon" class="shrink-0 my-auto aspect-square w-10" />
                 </div>

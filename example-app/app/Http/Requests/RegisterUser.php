@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests;
 
 use Illuminate\Validation\Rules\Password;
@@ -27,6 +26,23 @@ class RegisterUser extends FormRequest
             'email' => ['required', 'email'],
             'password' => ['required', Password::min(8)],
             'company' => ['required'],
+        ];
+    }
+
+    /**
+     * Get the custom validation messages.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'The name field is required.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'The email must be a valid email address.',
+            'password.required' => 'The password field is required.',
+            'password.min' => 'The password must be at least 8 characters.',
+            'company.required' => 'The company field is required.',
         ];
     }
 }
