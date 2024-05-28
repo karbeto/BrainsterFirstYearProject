@@ -12,7 +12,7 @@ Route::get('/create-event', [EventController::class, "create"])->name('create.ev
 Route::post('/store-event', [EventController::class, 'store'])->name('store.event');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/createEvent', [UserController::class, 'createEvent'])->name('createEvent');
+    Route::get('/create-event', [UserController::class, 'createEvent'])->name('createEvent');
 });
 
 Route::get('/login', [AuthController::class, 'indexLogin'])->name("auth.indexLogin");

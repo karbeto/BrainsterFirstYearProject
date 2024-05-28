@@ -6,7 +6,7 @@
 @if ($errors->any())
         <h2>Errors</h2>
         @foreach ($errors->all() as $error)
-            {{ $error }}
+           <p> {{ $error }}</p>
         @endforeach
     @endif
 <section class="bg-gray-900">
