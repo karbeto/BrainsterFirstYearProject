@@ -35,6 +35,8 @@
                     <span id="end-date-error" class="text-red-500 text-sm"></span>
                 </div>
             </div>
+
+
             <div class="flex flex-col md:flex-row gap-6 mb-4">
                 <div class="w-full">
                     <label for="ticket-price" class="block field-color font-medium mb-2">Ticket Price <span class="text-gray-500 text-sm">(optional)</span>:</label>
