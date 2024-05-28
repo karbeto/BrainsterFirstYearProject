@@ -66,5 +66,17 @@ document.getElementById('event-form').addEventListener('submit', function(event)
     }
 });
 
+//DashboardModal
+function openDeleteModal(eventId) {
+    const modal = document.getElementById('deleteModal_' + eventId);
+    modal.classList.remove('hidden');
+}
+
+
+function closeDeleteModal(eventId) {
+    const modal = document.getElementById('deleteModal_' + eventId);
+    modal.classList.add('hidden');
+}
+
 
 

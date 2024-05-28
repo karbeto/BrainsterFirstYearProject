@@ -4,11 +4,11 @@
 
 @section('content')
 @if ($errors->any())
-        <h2>Errors</h2>
-        @foreach ($errors->all() as $error)
-           <p> {{ $error }}</p>
-        @endforeach
-    @endif
+    <h2>Errors</h2>
+    @foreach ($errors->all() as $error)
+       <p> {{ $error }}</p>
+    @endforeach
+@endif
 <section class="bg-gray-900">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
@@ -61,18 +61,19 @@
         @error('password_confirmation')
             <span class="text-red-500 text-sm">{{ $message }}</span>
         @enderror
+        <span id="passwordMatchError" class="text-red-500 text-sm hidden">Passwords do not match</span>
     </div>
     <div class="flex items-center justify-between">
         <div class="flex items-start">
             <div class="flex items-center h-5">
-                <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50">
+            <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50">
             </div>
             <div class="ml-3 text-sm">
                 <label for="remember" class="text-gray-500">Remember me</label>
             </div>
         </div>
     </div>
-    <button type="submit" class="w-full p-2 rounded-xl box-border text-white bg-purple-600 hover:bg-[#101010]">Sign up</button>
+    <button type="submit" id="submitBtn" class="w-full p-2 rounded-xl box-border text-white bg-purple-600 hover:bg-[#101010]">Sign up</button>
     <p class="text-sm font-light text-gray-500">
         Already have an account? <a href="{{ route('auth.login') }}" class="font-medium text-[#f54646] hover:underline">Log in</a>
     </p>
@@ -81,5 +82,6 @@
         </div>
     </div>
 </section>
+
 <script src="{{ asset('js/register-validator.js') }}" defer></script>
 @endsection

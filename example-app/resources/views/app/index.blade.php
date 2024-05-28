@@ -14,14 +14,8 @@
             </div>
             <div class="flex gap-8 justify-between items-center">
             @if(session()->has('email'))
-            <!-- <form method="GET" action="{{ route('dashboard') }}">
-             <button type="submit" class="px-10 py-2 bg-violet-600 rounded-xl">Dashboard</button>
-                 </form> -->
-                    <a href="{{ route('dashboard') }}" class="px-10 py-2 bg-violet-600 rounded-xl">Dashboard</a>
-                    <form method="POST" action="{{ route('auth.logout') }}">
-                        @csrf
-                        <button type="submit" class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Log Out</button>
-                    </form>
+                    <a href="{{ route('create.event') }}" class="px-10 py-2 bg-violet-600 rounded-xl">Create Event</a>
+                    <a href="{{ route('dashboard') }}" class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Dashboard</a>
                 @else
                     <a href='{{ route("auth.login") }}' class="px-10 py-2 bg-violet-600 rounded-xl">Log In</a>
                     <a href='{{ route("auth.register") }}' class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Register</a>
