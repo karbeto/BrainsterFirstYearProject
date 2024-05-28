@@ -18,19 +18,19 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $user = User::where('email', $request->email)->first();
-
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 session()->put('email', $request->email);
-                session()->put('id', $request->id);
-                return redirect()->route("view-events");
+                session()->put('id', $user->id);
+                return redirect()->route('view-events');
+            } else {
+                Log::critical('User failed to login due to incorrect password: ' . $request->email);
+                return redirect()->route('auth.login')->withErrors(['password' => 'Invalid password']);
             }
         } else {
-            Log::critical('User failed to login ' . $request->email);
-            return redirect()->route('login');
+            Log::critical('User failed to login with email: ' . $request->email);
+            return redirect()->route('auth.indexLogin')->withErrors(['email' => 'Email not found']);
         }
-
-       
     }
     public function indexRegister()
     {
@@ -51,6 +51,6 @@ class AuthController extends Controller
 
         session()->flash('msg', 'User created');
 
-        return redirect()->route('login');
+        return redirect()->route('auth.login');
     }
 }

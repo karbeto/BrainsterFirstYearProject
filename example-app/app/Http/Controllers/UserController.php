@@ -33,7 +33,6 @@ class UserController extends Controller
     }
     public function createEvent()
     {
-
         return view('app.create-event');
     }
 }

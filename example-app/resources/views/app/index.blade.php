@@ -13,8 +13,9 @@
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6b051c7484d9d0153007283d96798e85af413ba0ce5ae7beead6b6617ba9dd44?apiKey=7925220406f349788b6d4a92c76ee210&" alt="Logo" class="shrink-0 my-auto w-48 md:w-60 max-w-full aspect-[7.69]" />
             </div>
             <div class="flex gap-8 justify-between items-center">
-                <a href="{{route("login")}}" class="px-10 py-2 bg-violet-600 rounded-xl">Log In</a>
-                <a href="{{route("register")}}" class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Register</a>
+                <a href=
+                '{{route("auth.login")}}' class="px-10 py-2 bg-violet-600 rounded-xl">Log In</a>
+                <a href='{{route("auth.register")}}' class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Register</a>
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8dafc9d6c564e37439e71d2f82259a6b72fdfaff1806f391b9b60d0d9ed230a1?apiKey=7925220406f349788b6d4a92c76ee210&" alt="User icon" class="shrink-0 my-auto aspect-square w-8 md:w-[35px]" />
             </div>
         </div>

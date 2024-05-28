@@ -3,6 +3,7 @@
 @section('title', 'Add Event')
 
 @section('content')
+
 <section class="flex items-center justify-center min-h-screen px-8">
     <form id="event-form" method="POST" action="{{ route('store.event') }}" class="w-full max-w-4xl bg-white rounded-lg shadow-lg p-7 animated" style="background-color: #101010;">
         @csrf
