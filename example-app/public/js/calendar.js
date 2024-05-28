@@ -44,14 +44,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to filter events based on checked filters
     function filterEventsByCheckedFilters(events) {
         const checkedFilters = getCheckedFilters();
-        console.log(checkedFilters);
         if (checkedFilters.length === 0) {
             return events; // Return all events if no filter is checked
         }
 
         const filteredEvents = [];
         for (const event of events) {
-            console.log(event)
             const eventTitleLower = event.extendedProps.users.company.toLowerCase();
             for (const filter of checkedFilters) {
                 if (eventTitleLower.includes(filter.toLowerCase())) {
@@ -69,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
         calendar.refetchEvents();
     });
     document.getElementById('cityFilter').addEventListener('change', function () {
-        console.log("here")
         const eventTypeFilter = parseInt(document.getElementById('eventTypeFilter').value);
         const cityFilter = parseInt(this.value);
         const calendar = document.getElementById('calendar').calendar;
@@ -132,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         });
-        console.log('Transformed events:', events); // Add this line to log transformed events
         return {
             events,
             eventCountPerDay
@@ -466,7 +462,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     document.getElementById('multiEventModal').classList.remove('hidden');
                 } else if (eventsOnDate.length === 1) {
                     const singleEvent = eventsOnDate[0];
-                    console.log(singleEvent);
                     const singleModalContent = document.getElementById('singleModalContent');
                     const singleModalImageContainer = document.getElementById('singleModalImageContainer');
 
