@@ -4,11 +4,17 @@ document.addEventListener('DOMContentLoaded', function() {
     var eventsData = null;//document.getElementById('eventsData').textContent;
     var slides = null;//JSON.parse(eventsData);
     fetch("/events")
-        .then(res => res.json())
-        .then(res => {
-            slides = res;
-            initSlider(slides);
-        })
+    .then(res => res.json())
+    .then(res => {
+        // Filter the events based on company name
+        const filteredSlides = res.filter(slide =>
+            slide.users.company.toLowerCase().includes('brainster') ||
+            slide.users.company.toLowerCase().includes('mobs') ||
+            slide.users.company.toLowerCase().includes('laboratorium')
+        );
+        initSlider(filteredSlides);
+    });
+
 
    
 
@@ -21,12 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
         thumbnailContainer.innerHTML = '';
     
         slides.forEach((slide, index) => {
-            console.log("this is slide")
-            console.log(slide)
-            // Check if the event title contains any of the keywords
-            if (slide.users.company.toLowerCase().includes('brainster') ||
-            slide.users.company.toLowerCase().includes('mobs') ||
-            slide.users.company.toLowerCase().includes('laboratorium')) {
                 // Create the event item
                 const listItem = document.createElement('div');
                 listItem.className = 'item' + (index === slides.length - 1 ? ' active' : '');
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 // Use prepend to add the thumbnail at the beginning of the container
                 thumbnailContainer.prepend(thumbnailItem);
-            }
+       
         });
     
         initSmoothScrolling(thumbnailContainer);
