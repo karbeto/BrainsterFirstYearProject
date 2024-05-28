@@ -39,7 +39,7 @@
             </div>
             <div class="hidden flex-col gap-4 mt-10 px-5" id="mobileMenu">
             @if(session()->has('email'))
-                    <a href="#" class="px-10 py-2 bg-violet-600 rounded-xl">Dashboard</a>
+                    <a href='{{ route("dashboard") }}' class="px-10 py-2 bg-violet-600 rounded-xl">Dashboard</a>
                     <form method="POST" action="{{ route('auth.logout') }}">
                         @csrf
                         <button type="submit" class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Log Out</button>
