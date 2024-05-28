@@ -56,7 +56,7 @@
     </div>
 
 
-<div class="px-24 w-full">
+<div class="md:px-24 w-full">
 
     <!--Here is the side bar -->
     <div class="slider">
