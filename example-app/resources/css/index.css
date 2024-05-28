@@ -58,7 +58,7 @@ svg{
     letter-spacing: 10px;
 }
 .slider .list .item .content h2{
-    font-size: 100px;
+    font-size: 70px;
     margin: 0;
 }
 .slider .list .item.active{
@@ -103,7 +103,8 @@ svg{
 
 .thumbnail::-webkit-scrollbar {
     height: 4px; /* Smaller scrollbar for aesthetics */
-    background-color: rgba(255,255,255,0.1); /* Optional: styled scrollbar background */
+    background-color: rgba(255,255,255,0.1);
+     /* Optional: styled scrollbar background */
 }
 
 .thumbnail::-webkit-scrollbar-thumb {
@@ -120,6 +121,8 @@ svg{
     border-radius: 10px; /* Rounded corners for aesthetics */
     overflow: hidden; /* Ensures no overflow from the rounded corners */
     background-color: #000; /* Fallback background */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%);
+
 }
 
 .thumbnail .item img {

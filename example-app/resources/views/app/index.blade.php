@@ -50,7 +50,7 @@
         <!-- Dynamic thumbnails -->
     </div>
     </div>
-    <div class="thumbnail mt-10"></div>
+    <div class="thumbnail"></div>
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- <div id="eventsData" style="display: none;">{{ $events }}</div> -->
 
