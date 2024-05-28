@@ -64,7 +64,35 @@ document.addEventListener('DOMContentLoaded', function () {
         return filteredEvents;
     }
 
+    document.getElementById('eventTypeFilter').addEventListener('change', function () {
+        const calendar = document.getElementById('calendar').calendar;
+        calendar.refetchEvents();
+    });
+    document.getElementById('cityFilter').addEventListener('change', function () {
+        console.log("here")
+        const eventTypeFilter = parseInt(document.getElementById('eventTypeFilter').value);
+        const cityFilter = parseInt(this.value);
+        const calendar = document.getElementById('calendar').calendar;
+        calendar.refetchEvents();
+    });
+    document.getElementById('default-search').addEventListener('input', function () {
+        const searchTerm = this.value.toLowerCase();
+        const checkedFilters = getCheckedFilters();
+        const eventTypeFilter = parseInt(document.getElementById('eventTypeFilter').value);
+        const cityFilter = parseInt(document.getElementById('cityFilter').value);
 
+        const filteredEvents = allEvents.filter(event =>
+            (event.title.toLowerCase().includes(searchTerm) ||
+                event.extendedProps.users.company.toLowerCase().includes(searchTerm) ||
+                event.extendedProps.city.name.toLowerCase().includes(searchTerm)) &&
+            (checkedFilters.length === 0 || checkedFilters.some(filter => event.extendedProps.users.company.toLowerCase().includes(filter.toLowerCase()))) &&
+            (!eventTypeFilter || event.extendedProps.type.id === eventTypeFilter) &&
+            (!cityFilter || event.extendedProps.city.id === cityFilter)
+        );
+
+        const calendar = document.getElementById('calendar').calendar;
+        calendar.refetchEvents();
+    });
 
     function transformEvents(jsonData) {
         const events = [];
@@ -156,10 +184,17 @@ document.addEventListener('DOMContentLoaded', function () {
             events: function (fetchInfo, successCallback, failureCallback) {
                 const eventTypeFilter = parseInt(document.getElementById('eventTypeFilter').value);
                 const cityFilter = parseInt(document.getElementById('cityFilter').value);
+                const searchInput = document.getElementById('default-search').value.toLowerCase();
                 const filteredEvents = filterEventsByCheckedFilters(allEvents).filter(event => filterEvents(allEvents, eventTypeFilter, cityFilter).includes(event));
-                console.log("filtered Events after click");
-                console.log(filteredEvents);
-                successCallback(filteredEvents);
+
+                const searchedEvents = filteredEvents.filter(event => {
+                    return (
+                        event.title.toLowerCase().includes(searchInput) ||
+                        event.extendedProps.description.toLowerCase().includes(searchInput)
+                    );
+                });
+
+                successCallback(searchedEvents);
             },
 
             eventContent: function (info) {
@@ -497,17 +532,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        document.getElementById('eventTypeFilter').addEventListener('change', function () {
-            const calendar = document.getElementById('calendar').calendar;
-            calendar.refetchEvents();
-        });
-        document.getElementById('cityFilter').addEventListener('change', function () {
-            console.log("here")
-            const eventTypeFilter = parseInt(document.getElementById('eventTypeFilter').value);
-            const cityFilter = parseInt(this.value);
-            const calendar = document.getElementById('calendar').calendar;
-            calendar.refetchEvents();
-        });
         document.getElementById('closeMultiEventModal').addEventListener('click', function () {
             document.getElementById('multiEventModal').classList.add('hidden');
         });
