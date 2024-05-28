@@ -19,6 +19,7 @@ class EventController extends Controller
     public function create(){
         $cities = City::all();
         $types = Type::all();
+ 
         return view("app.create-event", compact('cities', 'types'));
     }
 

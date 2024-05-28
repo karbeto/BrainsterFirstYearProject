@@ -51,7 +51,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const filteredEvents = [];
         for (const event of events) {
-            const eventTitleLower = event.title.toLowerCase();
+            console.log(event)
+            const eventTitleLower = event.extendedProps.users.company.toLowerCase();
             for (const filter of checkedFilters) {
                 if (eventTitleLower.includes(filter.toLowerCase())) {
                     filteredEvents.push(event);
@@ -97,7 +98,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         description: eventData.comment,
                         type: eventData.type,
                         city: eventData.city,
-                        city_name: eventData.city.name
+                        city_name: eventData.city.name,
+                        users: eventData.users
                     }
                 });
             }

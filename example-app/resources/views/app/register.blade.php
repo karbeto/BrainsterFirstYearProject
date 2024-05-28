@@ -74,7 +74,7 @@
     </div>
     <button type="submit" class="w-full p-2 rounded-xl box-border text-white bg-purple-600 hover:bg-[#101010]">Sign up</button>
     <p class="text-sm font-light text-gray-500">
-        Already have an account? <a href="{{ route('login') }}" class="font-medium text-[#f54646] hover:underline">Log in</a>
+        Already have an account? <a href="{{ route('auth.login') }}" class="font-medium text-[#f54646] hover:underline">Log in</a>
     </p>
 </form>
             </div>
