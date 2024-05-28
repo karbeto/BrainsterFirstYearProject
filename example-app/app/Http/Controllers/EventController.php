@@ -37,8 +37,10 @@ class EventController extends Controller
             'image_url' => 'required|url',
         ]);
     
+        if(session()->has("id")){
+
         $event = new Event();
-        $event->users_id = 1; // Assuming user_id 1 for now
+        $event->users_id = session()->get("id"); 
         $event->type_id = $request->type;
         $event->city_id = $request->location;
         $event->title = $validatedData['title'];
@@ -51,8 +53,13 @@ class EventController extends Controller
         $event->contact = $validatedData['contact'];
         $event->location = $validatedData['location'];
         $event->save();
-        
         return redirect()->route('view-events')->with('success', 'Event created successfully.');
+        }
+        else{
+            return redirect()->back()->with("error" , "Something went wrong");
+        }
+        
+        
     }
     
     public function all() 
