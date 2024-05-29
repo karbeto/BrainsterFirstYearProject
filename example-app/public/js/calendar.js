@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const filteredEvents = [];
         for (const event of events) {
+            console.log(event)
             const eventTitleLower = event.extendedProps.users.company.toLowerCase();
             for (const filter of checkedFilters) {
                 if (eventTitleLower.includes(filter.toLowerCase())) {
@@ -487,7 +488,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                         <h1 class="mb-4 text-2xl font-semibold">${singleEvent.title}</h1>
                                                         <p>Start: ${singleEvent.extendedProps.start_date}</p>
                                                         <p>End: ${singleEvent.extendedProps.end_date}</p>
-                                                        <p>Lokacija: ${singleEvent.extendedProps.location}</p>
+                                                        <p>Lokacija: ${singleEvent.extendedProps.city.name}</p>
                                                         <p>Cena: ${singleEvent.extendedProps.ticket_price}</p>
                                                         <p>Kontakt: ${singleEvent.extendedProps.contact}</p>
                                                         <p>Promocija: -50% pijaloci</p>
@@ -561,7 +562,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <h1 class="mb-4 text-2xl font-semibold">${singleEvent.title}</h1>
             <p>Start: ${singleEvent.extendedProps.start_date}</p>
             <p>End: ${singleEvent.extendedProps.end_date}</p>
-            <p>Lokacija: ${singleEvent.extendedProps.location}</p>
+            <p>Lokacija: ${singleEvent.extendedProps.city.name}</p>
             <p>Cena: ${singleEvent.extendedProps.ticket_price}</p>
             <p>Kontakt: ${singleEvent.extendedProps.contact}</p>
             <p>Promocija: -50% pijaloci</p>
