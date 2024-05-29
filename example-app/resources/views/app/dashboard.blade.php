@@ -6,23 +6,24 @@
     <body class="bg-gray-900 text-white font-sans">
         <div class="container mx-auto px-4 py-8">
             <!-- Navbar -->
-            <nav class="flex justify-between items-center mb-8">
-                <div>
-                    <a href="{{route('view-events')}}"><p href="#" class="text-3xl font-bold text-purple-500">Dashboard</p></a>
-                </div>
-                <div class="flex items-center">
-                    @if(session()->has('email'))
-                        <a href="{{ route('create.event') }}" class="px-4 py-2 bg-purple-600 text-white rounded-full mr-4 hover:bg-purple-700">Create Event</a>
-                        <form method="POST" action="{{ route('auth.logout') }}">
-                            @csrf
-                            <button type="submit" class="px-4 py-2 bg-transparent border border-purple-600 text-purple-600 rounded-full hover:bg-purple-600 hover:text-white">Log Out</button>
-                        </form>
-                    @else
-                        <a href='{{ route("auth.login") }}' class="px-4 py-2 bg-purple-600 text-white rounded-full mr-4 hover:bg-purple-700">Log In</a>
-                        <a href='{{ route("auth.register") }}' class="px-4 py-2 bg-transparent border border-purple-600 text-purple-600 rounded-full hover:bg-purple-600 hover:text-white">Register</a>
-                    @endif
-                </div>
-            </nav>
+            <nav class="flex flex-col lg:flex-row justify-between items-center mb-8">
+    <div class="mb-4 lg:mb-0 lg:mr-4">
+        <p href="#" class="text-3xl font-bold text-purple-500">Dashboard</p>
+    </div>
+    <div class="flex items-center">
+        @if(session()->has('email'))
+            <a href="{{ route('create.event') }}" class="px-4 py-2 bg-purple-600 text-white rounded-full mr-4 hover:bg-purple-700">Create Event</a>
+            <form method="POST" action="{{ route('auth.logout') }}">
+                @csrf
+                <button type="submit" class="px-4 py-2 bg-transparent border border-purple-600 text-purple-600 rounded-full hover:bg-purple-600 hover:text-white">Log Out</button>
+            </form>
+        @else
+            <a href='{{ route("auth.login") }}' class="px-4 py-2 bg-purple-600 text-white rounded-full mr-4 hover:bg-purple-700">Log In</a>
+            <a href='{{ route("auth.register") }}' class="px-4 py-2 bg-transparent border border-purple-600 text-purple-600 rounded-full hover:bg-purple-600 hover:text-white">Register</a>
+        @endif
+    </div>
+</nav>
+
 
             <!-- Your Events Section -->
             <section class="mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -89,6 +90,7 @@
             </section>
         </div>
         <script>
+            //DashboardModal
 function openDeleteModal(eventId) {
     const modal = document.getElementById('deleteModal_' + eventId);
     modal.classList.remove('hidden');
@@ -100,6 +102,7 @@ function closeDeleteModal(eventId) {
     modal.classList.add('hidden');
 }
 
-        </script>
-    </body>
+
+
+        </script>    </body>
 @endsection
