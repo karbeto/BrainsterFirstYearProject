@@ -8,7 +8,7 @@
             <!-- Navbar -->
             <nav class="flex justify-between items-center mb-8">
                 <div>
-                    <p href="#" class="text-3xl font-bold text-purple-500">Dashboard</p>
+                    <a href="{{route('view-events')}}"><p href="#" class="text-3xl font-bold text-purple-500">Dashboard</p></a>
                 </div>
                 <div class="flex items-center">
                     @if(session()->has('email'))
@@ -38,7 +38,7 @@
                         <div class="px-6 py-4 flex justify-end">
                             <a href="{{ route('edit.event', $event->id) }}" class="text-blue-400 hover:text-blue-300 mr-2">Edit</a>
                             <!-- Delete Button with Modal -->
-                            <button type="button" onclick="openDeleteModal({{ $event->id }})" class="text-red-400 hover:text-red-300">Delete</button>
+                            <button type="button" onclick="openDeleteModal(<?php echo $event->id?>)" class="text-red-400 hover:text-red-300">Delete</button>
                             <!-- Modal -->
                             <div id="deleteModal_{{ $event->id }}" class="hidden fixed z-10 inset-0 overflow-y-auto">
                                 <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -76,7 +76,7 @@
                                                     Delete
                                                 </button>
                                             </form>
-                                            <button type="button" onclick="closeDeleteModal({{ $event->id }})" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm">
+                                            <button type="button" onclick="closeDeleteModal(<?php echo $event->id ?>)" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm">
                                                 Cancel
                                             </button>
                                         </div>
@@ -88,7 +88,18 @@
                 @endforeach
             </section>
         </div>
+        <script>
+function openDeleteModal(eventId) {
+    const modal = document.getElementById('deleteModal_' + eventId);
+    modal.classList.remove('hidden');
+}
 
-        <script src="{{ asset('js/event-validator.js') }}"></script>
+
+function closeDeleteModal(eventId) {
+    const modal = document.getElementById('deleteModal_' + eventId);
+    modal.classList.add('hidden');
+}
+
+        </script>
     </body>
 @endsection

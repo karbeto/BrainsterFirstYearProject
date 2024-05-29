@@ -1,4 +1,7 @@
-document.getElementById('event-form').addEventListener('submit', function(event) {
+let formEvent = document.querySelector('.event-form');
+console.log(formEvent);
+
+formEvent.addEventListener('submit', function(event) {
     let isValid = true;
     
     document.querySelectorAll('.text-red-500').forEach(el => el.textContent = '');
@@ -65,18 +68,5 @@ document.getElementById('event-form').addEventListener('submit', function(event)
         event.preventDefault();
     }
 });
-
-//DashboardModal
-function openDeleteModal(eventId) {
-    const modal = document.getElementById('deleteModal_' + eventId);
-    modal.classList.remove('hidden');
-}
-
-
-function closeDeleteModal(eventId) {
-    const modal = document.getElementById('deleteModal_' + eventId);
-    modal.classList.add('hidden');
-}
-
 
 
