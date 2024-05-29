@@ -61,11 +61,6 @@
     overflow-y: auto;
     height: 250px;
 }
-
-.fc-day-top {
-    height: 35px;
-}
-
 .fc-h-event {
     border: none;
     background-color: transparent;
