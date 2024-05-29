@@ -2,6 +2,7 @@
     width: 100%;
     height: 100vh;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .fc-day-header {
@@ -32,7 +33,6 @@
     border-style: none;
 }
 
-
 .fc-daygrid-body {
     border: none;
 }
@@ -46,16 +46,15 @@
 }
 
 .fc-scroller {
-    overflow: hidden !important;
+    overflow-y: auto !important;
 }
 
 .fc-daygrid-body .fc-day {
-
     border: 1px solid #8448E5 !important;
     border-radius: 15px;
-    padding: 1px;
-    margin: 10px;
-    width: calc(100% / 7 - 25px);
+    padding: 10px;
+    margin: 5px;
+    width: calc(100% / 7 - 10px);
     display: inline-block;
     vertical-align: top;
     overflow-y: auto;
@@ -63,7 +62,8 @@
 }
 
 .fc-day-top {
-    height: 35px;
+    height: 40px;
+    font-size: 1rem;
 }
 
 .fc-h-event {
@@ -71,13 +71,13 @@
     background-color: transparent;
 }
 
-/* margin between events */
 .fc-event-main {
     margin-bottom: 5px;
 }
 
 .fc-daygrid-day-number {
     color: #8448E5;
+    font-size: 1rem;
 }
 
 .fc .fc-daygrid-day-top {
@@ -86,28 +86,31 @@
 }
 
 .fc .fc-button {
-    padding: 0.8em !important;
+    padding: 1em !important;
     width: 100%;
     background-color: #8448E5 !important;
 }
 
 .fc .fc-toolbar-title {
     border: 1px solid #8448E5 !important;
-    padding: 0.43em;
+    padding: 0.5em;
     border-radius: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: 1.2rem;
 }
 
 .fc .fc-toolbar-chunk:nth-child(odd) {
     width: 30%;
     text-align: center;
 }
+
 .fc .fc-toolbar-chunk:nth-child(2) {
     width: 40%;
     text-align: center;
 }
+
 .custom-event {
     border-radius: 10px;
     padding: 10px;
@@ -123,7 +126,7 @@
 }
 
 .event-title {
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: bold;
     text-align: center;
     white-space: normal;
@@ -187,7 +190,6 @@ event-info {
     padding: 10px;
 }
 
-/* Styles for each row of info */
 .info-row {
     display: flex;
     justify-content: space-between;
@@ -195,37 +197,26 @@ event-info {
 }
 
 .event-value {
-    /* Limit the width of the value container */
     max-width: 100%;
-    /* Adjust as needed */
-    /* Truncate text if it overflows */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Styles for the label of each piece of info */
 .event-label {
     font-weight: bold;
 }
 
-/* Styles for the value of each piece of info */
-.event-value {
-    flex-grow: 1;
-    /* Ensure the value takes up remaining space */
-}
-
-
 .single-event {
     display: flex;
     flex-direction: column;
-    height: 190px;
+    height: 250px;
     margin: 0;
     padding: 0;
 }
 
 .single-event .event-title {
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: bold;
     text-align: center;
     display: flex;
@@ -243,23 +234,18 @@ event-info {
 }
 
 ::-webkit-scrollbar {
-    width: 12px;
-    /* width of the entire scrollbar */
+    width: 6px; /* Reduced width */
 }
 
 ::-webkit-scrollbar-track {
     background: white;
     border-radius: 20px;
-    /* color of the tracking area */
 }
 
 ::-webkit-scrollbar-thumb {
     background-color: #8448E5;
-    /* color of the scroll thumb */
     border-radius: 20px;
-    /* roundness of the scroll thumb */
     border: 1px solid #8448E5;
-    /* creates padding around scroll thumb */
 }
 
 #multiEventModalBody {
@@ -300,5 +286,79 @@ event-info {
     max-width: unset !important;
     max-height: unset !important;
 }
+
 /* Styles for calendar responsiveness */
+@media (max-width: 1024px) {
+    .fc-daygrid-body .fc-day {
+        height: 230px;
+        width: calc(100% / 7 - 10px);
+    }
+
+    #eventModal {
+        width: 90%;
+        height: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .fc-daygrid-body .fc-day {
+        height: 200px;
+        width: calc(100% / 7 - 10px);
+    }
+
+    .fc .fc-toolbar-chunk:nth-child(odd) {
+        width: 50%;
+    }
+    
+    .fc .fc-toolbar-chunk:nth-child(2) {
+        width: 50%;
+    }
+
+    .fc .fc-toolbar-title {
+        font-size: 1rem;
+        padding: 0.3em;
+    }
+
+    #calendar {
+        display: flex;
+        justify-content: center;
+    }
+
+    .fc .fc-daygrid-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fc-daygrid-day {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .fc-daygrid-body .fc-day {
+        height: 150px;
+        width: 100%;
+    }
+
+    .fc .fc-toolbar-title {
+        font-size: 0.8rem;
+        padding: 0.2em;
+    }
+
+    #calendar {
+        display: flex;
+        justify-content: center;
+    }
+
+    .fc .fc-daygrid-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fc-daygrid-day {
+        width: 100% !important;
+    }
+}
 
