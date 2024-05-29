@@ -9,6 +9,7 @@
     @vite('resources/css/calendar.css')
     <link href='https://unpkg.com/fullcalendar@5.11.0/main.css' rel='stylesheet' />
     <script src='https://unpkg.com/fullcalendar@5.11.0/main.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <style>
         body {
             background-color: #101010;
