@@ -86,13 +86,14 @@
 }
 
 .fc .fc-button {
-    padding: 0.8em 10em !important;
+    padding: 0.8em !important;
+    width: 100%;
     background-color: #8448E5 !important;
 }
 
 .fc .fc-toolbar-title {
     border: 1px solid #8448E5 !important;
-    padding: 0.43em 5.5em;
+    padding: 0.43em;
     border-radius: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
