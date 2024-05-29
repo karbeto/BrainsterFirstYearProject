@@ -194,7 +194,7 @@
     </div>
 
     <div id="multiEventModal" class="fixed inset-0 z-50 flex justify-center items-center backdrop-blur hidden">
-        <div id="mw" class="p-8 rounded-lg w-1/3 h-3/5 relative">
+        <div id="mw" class="p-8 rounded-lg w-4/5 h-4/5 md:w-1/3 md:h-3/5 relative">
             <div id="multiEventModalBody"></div>
             <button id="closeMultiEventModal" class="absolute top-0 right-0 m-2 text-white bg-transparent px-3 py-2 rounded-full">
                 <span>&times;</span>
@@ -204,7 +204,7 @@
     
 
     <div id="singleEventModal" class="fixed inset-0 z-50 flex justify-center items-center backdrop-blur hidden">
-        <div class="bg-[#101010] text-white rounded-lg overflow-auto relative w-1/2">
+        <div class="bg-[#101010] text-white rounded-lg overflow-auto relative w-4/5 md:w-1/2">
             <div id="singleModalImageContainer"></div>
             <div id="singleModalContent" class="py-4"></div>
             <button id="closeSingleModal" class="absolute top-0 right-0 m-2 text-white bg-transparent px-3 py-2 rounded-full">
