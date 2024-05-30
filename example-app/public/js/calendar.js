@@ -147,7 +147,9 @@ document.addEventListener('DOMContentLoaded', function () {
             showNonCurrentDates: false,
             fixedWeekCount: false,
             handleWindowResize: true,
-            height: 1750,
+            aspectRatio: 2,
+            contentHeight:"auto",
+            // height: 1750,
             views: {
                 customDayGrid: {
                     type: 'dayGridMonth',
@@ -207,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     imageContainer.classList.add('event-image');
                     imageContainer.style.backgroundImage = `url(${info.event.extendedProps.bgImage})`;
                     imageContainer.style.backgroundSize = 'cover';
-                    imageContainer.style.height = '100%'; // 80% height
+                    imageContainer.style.height = '80%'; // 80% height
 
                     // Create an img element for the event image
                     const imgElement = document.createElement('img');
