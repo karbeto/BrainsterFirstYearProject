@@ -15,10 +15,10 @@
             <div class="flex gap-8 justify-between items-center">
             @if(session()->has('email'))
                     <a href="{{ route('create.event') }}" class="px-10 py-2 bg-violet-600 rounded-xl">Create Event</a>
-                    <a href="{{ route('dashboard') }}" class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Dashboard</a>
+                    <a href="{{ route('dashboard') }}" class="px-10 py-2 whitespace-nowrap rounded-xl !border-2 !border-violet-600 border-solid">Dashboard</a>
                 @else
                     <a href='{{ route("auth.login") }}' class="px-10 py-2 bg-violet-600 rounded-xl">Log In</a>
-                    <a href='{{ route("auth.register") }}' class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Register</a>
+                    <a href='{{ route("auth.register") }}' class="px-10 py-2 whitespace-nowrap rounded-xl !border-2 !border-violet-600 border-solid">Register</a>
                 @endif
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8dafc9d6c564e37439e71d2f82259a6b72fdfaff1806f391b9b60d0d9ed230a1?apiKey=7925220406f349788b6d4a92c76ee210&" alt="User icon" class="shrink-0 my-auto aspect-square w-8 md:w-[35px]" />
             </div>
@@ -140,14 +140,14 @@
                         Laboratorium
                     </label>
                 </div>
-                <form class="max-w-md !border-[#8448E5] !border-2 rounded-lg">
-                    <div class="relative">
+                <form class="max-w-md ">
+                    <div class="relative !border-[#8448E5] !border-2 rounded-lg">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
-                        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-white border  rounded-lg bg-transparent focus:ring-blue-500 focus:border-blue-500" placeholder="Search" required />
+                        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm !placeholder-white rounded-lg bg-transparent" placeholder="Search" required />
                     </div>
                 </form>
 

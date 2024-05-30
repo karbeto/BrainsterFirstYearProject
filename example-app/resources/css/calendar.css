@@ -297,7 +297,7 @@ event-info {
     max-height: unset !important;
 }
 /* Styles for calendar responsiveness */
-/* @media (max-width: 1024px) {
+@media (max-width: 1024px) {
     .fc-daygrid-body .fc-day {
         height: 230px;
         width: calc(100% / 7 - 10px);
@@ -370,4 +370,4 @@ event-info {
         width: 100% !important;
     }
 }
- */
+
