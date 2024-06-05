@@ -61,6 +61,7 @@
     overflow-y: auto;
     height: 250px;
     max-height: 250px;
+    overflow-x: hidden;
 }
 .fc-h-event {
     border: none;
@@ -108,6 +109,14 @@
     border-radius: 10px;
     padding: 10px;
     color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+.kontejner{
+    box-sizing: border-box;
+    max-height: 200px;
+    display:flex;
+    flex-direction: column;
 }
 
 .custom-events {
@@ -297,7 +306,7 @@ event-info {
     max-height: unset !important;
 }
 /* Styles for calendar responsiveness */
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
     .fc-daygrid-body .fc-day {
         height: 230px;
         width: calc(100% / 7 - 10px);
@@ -307,10 +316,18 @@ event-info {
         width: 90%;
         height: 90%;
     }
-}
+} */
 
-@media (max-width: 768px) {
+ @media (max-width: 768px) {
+
     .fc-daygrid-body .fc-day {
+
+        /* width: calc(100% / 7 - 25px);
+        max-height: 250px; */
+        display: table-cell;
+    }
+
+    /* .fc-daygrid-body .fc-day {
         height: 200px;
         width: calc(100% / 7 - 10px);
     }
@@ -341,10 +358,10 @@ event-info {
 
     .fc-daygrid-day {
         width: 100% !important;
-    }
+    } */
 }
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
     .fc-daygrid-body .fc-day {
         height: 150px;
         width: 100%;
@@ -369,5 +386,6 @@ event-info {
     .fc-daygrid-day {
         width: 100% !important;
     }
-}
+} */
+
 

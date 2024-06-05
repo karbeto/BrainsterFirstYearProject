@@ -34,19 +34,19 @@
                     </svg>
                 </div>
             </div>
-            <div class="hidden flex-col gap-4 mt-10 px-5" id="mobileMenu">
+            <div class="hidden flex gap-4 mt-10 px-5" id="mobileMenu">
             @if(session()->has('email'))
             <form method="GET" action="{{ route('dashboard') }}">
-             <button type="submit" class="px-10 py-2 bg-violet-600 rounded-xl">Dashboard</button>
+             <button type="submit" class="px-10 py-2 bg-violet-600 !border-2 !border-violet-600 border-solid rounded-xl">Dashboard</button>
         <    </form>
 
                     <form method="POST" action="{{ route('auth.logout') }}">
                         @csrf
-                        <button type="submit" class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Log Out</button>
+                        <button type="submit" class="px-10 py-2 whitespace-nowrap rounded-xl !border-2 !border-violet-600 border-solid">Log Out</button>
                     </form>
                 @else
                     <a href='{{ route("auth.login") }}' class="px-10 py-2 bg-violet-600 rounded-xl">Log In</a>
-                    <a href='{{ route("auth.register") }}' class="px-10 py-2 whitespace-nowrap rounded-xl border border-violet-600 border-solid">Register</a>
+                    <a href='{{ route("auth.register") }}' class="px-10 py-2 whitespace-nowrap rounded-xl !border-2 !border-violet-600 border-solid">Register</a>
                 @endif
                 <div class="flex justify-center">
                     <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8dafc9d6c564e37439e71d2f82259a6b72fdfaff1806f391b9b60d0d9ed230a1?apiKey=7925220406f349788b6d4a92c76ee210&" alt="User icon" class="shrink-0 my-auto aspect-square w-10" />
@@ -85,7 +85,7 @@
 
 
         <div class=" gap-5 justify-between mt-16 mb-16 w-full text-lg leading-8 text-white max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
-            <div class="!flex gap-5 !justify-between !w-full !m-auto font-medium max-md:flex-wrap">
+            <div class="!flex  items-center gap-5 !justify-between flex-col w-1/3 md:w-full !m-auto font-medium max-md:flex-wrap !md:flex-row">
 
                 <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white !bg-[#8448E5] hover:opacity focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">All Events <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" height="20" width="15" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path fill="#ffffff" d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
