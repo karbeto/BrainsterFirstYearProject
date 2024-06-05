@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     eventElement.appendChild(imageContainer);
 
                     const container = document.createElement('div');
-                    container.classList.add('flex', 'kontejner', 'items-center');
+                    container.classList.add('flex', 'items-center');
                     const timeElement = document.createElement('div');
                     timeElement.classList.add('mr-2', 'text-white'); // Add margin and color using Tailwind classes
                     timeElement.textContent = eventTime; // Set event time text
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     eventElement.style.backgroundColor = info.event.extendedProps.bgColor;
 
                     const container = document.createElement('div');
-                    container.classList.add('flex', 'kontejner', 'items-center');
+                    container.classList.add('flex', 'items-center');
                     const timeElement = document.createElement('div');
                     timeElement.classList.add('mr-2', 'text-white'); // Add margin and color using Tailwind classes
                     timeElement.textContent = eventTime; // Set event time text
