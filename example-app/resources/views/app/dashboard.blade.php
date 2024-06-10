@@ -8,7 +8,7 @@
             <!-- Navbar -->
             <nav class="flex flex-col lg:flex-row justify-between items-center mb-8">
     <div class="mb-4 lg:mb-0 lg:mr-4">
-        <p href="#" class="text-3xl font-bold text-purple-500">Dashboard</p>
+        <a href="{{route("view-events")}}" class="text-3xl font-bold text-purple-500">All Events</a>
     </div>
     <div class="flex items-center">
         @if(session()->has('email'))
